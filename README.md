@@ -1,2 +1,3 @@
-# cudl-fp
-Sass functional programming functions
+# 🔥 Sass-fire 🔥
+
+Sass functional programming exploration
