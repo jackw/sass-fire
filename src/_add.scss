@@ -1,0 +1,9 @@
+/// Adds two values.
+///
+/// @param {Number} a
+/// @param {Number} b
+/// @return {Number}
+
+@function add($a, $b) {
+    @return $a + $b;
+}

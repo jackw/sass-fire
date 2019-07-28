@@ -1,0 +1,8 @@
+/// A function that always returns `true`.
+/// Any passed in parameters are ignored.
+///
+/// @return {bool} true
+
+@function T($rgs...) {
+    @return true;
+}

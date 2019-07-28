@@ -1,0 +1,9 @@
+@import 'true';
+@import 'reduce';
+@import 'add';
+
+@include describe('reduce [function]') {
+    @include it('should run a function against each item in a list') {
+        @include assert-equal(reduce(add, 0, (1 2 3 4 5 6 7 8 9)), 45);
+    }
+}

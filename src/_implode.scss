@@ -1,0 +1,17 @@
+/// Returns a string made by inserting the `separator` between each element and
+/// concatenating all the elements into a single string.
+///
+/// @param {Number|String} separator The string used to separate the elements.
+/// @param {Array} xs The elements to join into a string.
+/// @return {String} str The string made by concatenating `xs` with `separator`.
+
+@function implode($separator: '', $xs: ()) {
+    $result: '';
+    @for $i from 1 through length($xs) {
+        $delimiter: if($i != 1, quote($separator), '');
+        $item: #{$delimiter + nth($xs, $i)};
+        $result: #{$result + $item};
+    }
+
+    @return $result;
+}

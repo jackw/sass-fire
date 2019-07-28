@@ -1,0 +1,20 @@
+@import 'true';
+@import 'implode';
+
+@include describe('implode [function]') {
+    @include it('should return a string') {
+        @include assert-equal(implode('', (1 2 3 4 5 6 7 8 9)), '123456789');
+    }
+    @include it('should join with delimiter') {
+        @include assert-equal(
+            implode('|', (1 2 3 4 5 6 7 8 9)),
+            '1|2|3|4|5|6|7|8|9'
+        );
+    }
+    @include it('should be able to use a number as delimiter') {
+        @include assert-equal(
+            implode(0, (1 2 3 4 5 6 7 8 9)),
+            '10203040506070809'
+        );
+    }
+}

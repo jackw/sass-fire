@@ -1,0 +1,14 @@
+/// Returns the last element of the given list or string.
+///
+/// @param {List|String} list
+/// @return {*}
+/// @see init
+/// @see head
+/// @see tail
+
+@function last($list) {
+    @if type-of($list) == 'string' {
+        @return str-slice($list, str-length($list), str-length($list));
+    }
+    @return nth($list, length($list));
+}

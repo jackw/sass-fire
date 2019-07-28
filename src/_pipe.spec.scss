@@ -1,0 +1,13 @@
+@import 'true';
+@import 'pipe';
+@import 'implode';
+
+@include describe('pipe [function]') {
+    @include it('should run a series of functions against a list') {
+        $input: ('a', 'b', 'c');
+        @include assert-equal(
+            pipe((join, ('d', 'e')), (implode, '-'), $input),
+            'd-e-a-b-c'
+        );
+    }
+}

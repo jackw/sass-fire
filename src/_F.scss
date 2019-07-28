@@ -1,0 +1,8 @@
+/// A function that always returns `false`.
+/// Any passed in parameters are ignored.
+///
+/// @return {bool} false
+
+@function F($args...) {
+    @return false;
+}

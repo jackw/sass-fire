@@ -1,0 +1,11 @@
+@import 'true';
+@import 'T';
+
+@include describe('T [function]') {
+    @include it('should return true') {
+        @include assert-equal(T(), true);
+    }
+    @include it('should return true regardless of params') {
+        @include assert-equal(T('a', 'b'), true);
+    }
+}

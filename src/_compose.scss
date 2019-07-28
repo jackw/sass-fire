@@ -1,0 +1,30 @@
+@import 'init';
+@import 'last';
+@import 'head';
+@import 'tail';
+
+/// Performs right-to-left function composition.
+///
+/// @param {Function...} functions... The functions to compose
+/// @return {Function}
+/// @see pipe
+
+@function compose($params...) {
+    $function-list: init($params);
+    $result: last($params);
+
+    @for $i from length($function-list) * -1 through -1 {
+        $function: nth($function-list, abs($i));
+        $result: _run-function-with-params($function, $result);
+    }
+
+    @return $result;
+}
+
+@function _run-function-with-params($function, $input) {
+    $fn: head($function);
+    @if type-of($function) == 'list' or type-of($function) == 'arglist' {
+        $input: append(tail($function), $input);
+    }
+    @return call($fn, $input...);
+}

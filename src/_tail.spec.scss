@@ -1,0 +1,11 @@
+@import 'true';
+@import 'tail';
+
+@include describe('tail [function]') {
+    @include it('should return all but item from a list') {
+        @include assert-equal(tail((1 2 3 4 5 6 7 8 9)), (2 3 4 5 6 7 8 9));
+    }
+    @include it('should return all but last item from a string') {
+        @include assert-equal(tail('hello world'), 'ello world');
+    }
+}

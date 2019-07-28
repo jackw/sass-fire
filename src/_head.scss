@@ -1,0 +1,13 @@
+/// Returns the first element of the given list or string.
+/// In some libraries this function is named `first`.
+///
+/// @param {Array|String} list
+/// @return {*}
+
+@function head($list) {
+    @if type-of($list) == 'string' {
+        @return str-slice($list, 1, 1);
+    }
+
+    @return nth($list, 1);
+}

@@ -1,0 +1,14 @@
+@import 'slice';
+
+/// Returns all but the first element of the given list or string.
+///
+/// @param {*} list
+/// @return {*}
+/// @see head
+/// @see init
+/// @see last
+
+@function tail($list) {
+    $length: if(type-of($list) == 'string', str-length($list), length($list));
+    @return slice(2, $length, $list);
+}
