@@ -4806,7 +4806,7 @@ sane@^4.0.3:
     minimist "^1.1.1"
     walker "~1.0.5"
 
-sass-convert@^0.5.0:
+sass-convert@^0.5.0, sass-convert@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/sass-convert/-/sass-convert-0.5.2.tgz#b1ed42b0e8d6fe98ec7ed6e78a38e26564860f06"
   dependencies:

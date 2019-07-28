@@ -6,7 +6,7 @@
     "author": "Jack Westbrook <jack.westbrook@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "document": "yarn sassdoc ./src/*.scss",
+        "document": "yarn sassdoc ./src/*.scss --config ./.sassdocrc.yaml",
         "lint": "stylelint ./src/**/*.scss",
         "test": "yarn jest",
         "tdd": "watch 'yarn run test' ./"
@@ -19,7 +19,6 @@
         "prettier": "^1.18.2",
         "sass-true": "^5.0.0",
         "sassdoc": "^2.7.0",
-        "sassdocify": "^0.3.4",
         "stylelint": "^10.1.0",
         "stylelint-config-prettier": "^5.2.0",
         "stylelint-config-sass-guidelines": "^6.0.0",
