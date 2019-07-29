@@ -1,0 +1,10 @@
+@import 'add';
+
+/// Increments its argument.
+/// @param {Number} n
+/// @return {Number} n + 1
+/// @see dec
+
+@function inc($n) {
+    @return add($n, 1);
+}

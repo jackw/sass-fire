@@ -1,0 +1,8 @@
+@import 'true';
+@import 'inc';
+
+@include describe('inc [function]') {
+    @include it('should increment the number by 1') {
+        @include assert-equal(inc(20), 21);
+    }
+}
