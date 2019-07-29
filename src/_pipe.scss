@@ -25,5 +25,5 @@
     @if type-of($function) == 'list' or type-of($function) == 'arglist' {
         $input: append(tail($function), $input);
     }
-    @return call($fn, $input...);
+    @return call(get-function($fn), $input...);
 }
