@@ -1,0 +1,8 @@
+@import 'true';
+@import 'subtract';
+
+@include describe('subtract [function]') {
+    @include it('should subtract two numbers together') {
+        @include assert-equal(subtract(20, 3), 17);
+    }
+}

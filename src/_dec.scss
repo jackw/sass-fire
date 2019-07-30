@@ -1,0 +1,10 @@
+@import 'subtract';
+
+/// Deincrements its argument.
+/// @param {Number} n
+/// @return {Number} n - 1
+/// @see inc
+
+@function dec($n) {
+    @return subtract($n, 1);
+}

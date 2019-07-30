@@ -1,0 +1,9 @@
+/// Subtract two values.
+///
+/// @param {Number} a
+/// @param {Number} b
+/// @return {Number}
+
+@function subtract($a, $b) {
+    @return $a - $b;
+}
