@@ -1,0 +1,12 @@
+@import 'true';
+@import 'filter';
+
+@function _filter_spec_isEven($n) {
+    @return $n % 2 == 0;
+}
+
+@include describe('filter [function]') {
+    @include it('should filter the list according to the predicate') {
+        @include assert-equal(filter(_filter_spec_isEven, (1, 2, 3, 4)), (2 4));
+    }
+}

@@ -1,0 +1,15 @@
+@import 'head';
+@import 'partition';
+
+/// Takes a predicate and a `filterable`, and returns a new filterable of the
+/// same type containing the members of the given filterable which satisfy the
+/// given predicate.
+///
+/// @param {Function} pred
+/// @param {Array} filterable
+/// @return {Array} Filterable
+/// @see reject
+
+@function filter($predicate, $list) {
+    @return head(partition($predicate, $list));
+}

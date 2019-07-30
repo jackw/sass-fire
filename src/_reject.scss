@@ -1,0 +1,13 @@
+@import 'last';
+@import 'partition';
+
+/// The complement of `filter`
+///
+/// @param {Function} pred
+/// @param {Array} filterable
+/// @return {Array}
+/// @see filter
+
+@function reject($pred, $filterable) {
+    @return last(partition($pred, $filterable));
+}
