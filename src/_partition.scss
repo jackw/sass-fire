@@ -1,25 +1,23 @@
-/// Takes a predicate and a list or other `Filterable` object and returns the
-/// pair of filterable objects of the same type of elements which do and do not
-/// satisfy, the predicate, respectively. Filterable objects include plain objects or any object
-/// that has a filter method such as `Array`.
+/// Takes a predicate and a list and returns a pair of filterable lists of the same type of
+/// elements which do and do not satisfy, the predicate, respectively.
 ///
 /// @param {Function} pred A predicate to determine which side the element belongs to.
-/// @param {Array} filterable the list (or other filterable) to partition.
+/// @param {Array} filterable the list to partition.
 /// @return {Array} An array, containing first the subset of elements that satisfy the
 ///  predicate, and second the subset of elements that do not satisfy.
 /// @see filter
 /// @see reject
 
 @function partition($pred, $filterable) {
-    $list-true: ();
-    $list-false: ();
+    $satisfy: ();
+    $dissatisfy: ();
     @each $item in $filterable {
         $truthy: if(call(get-function($pred), $item), true, false);
         @if $truthy {
-            $list-true: append($list-true, $item);
+            $satisfy: append($satisfy, $item);
         } @else {
-            $list-false: append($list-false, $item);
+            $dissatisfy: append($dissatisfy, $item);
         }
     }
-    @return ($list-true, $list-false);
+    @return ($satisfy, $dissatisfy);
 }
