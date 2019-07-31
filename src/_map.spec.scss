@@ -5,11 +5,27 @@
 @function _map_spec_add5($number) {
     @return $number + 5;
 }
+@function _map_spec_double($number) {
+    @return $number * 2;
+}
 
 @include describe('map [function]') {
     @include it('should run a function against each item in a list') {
         $input: (1 2 3 4 5 6 7 8 9);
         $expected: (6 7 8 9 10 11 12 13 14);
         @include assert-equal(map(_map_spec_add5, $input), $expected);
+    }
+    @include it('should run a function against each item in an object') {
+        $input: (
+            x: 1,
+            y: 2,
+            z: 3
+        );
+        $expected: (
+            x: 2,
+            y: 4,
+            z: 6
+        );
+        @include assert-equal(map(_map_spec_double, $input), $expected);
     }
 }

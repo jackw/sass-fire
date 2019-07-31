@@ -9,12 +9,24 @@
 
 @function map($function, $list) {
     $accumulator: ();
-    @for $i from 1 through length($list) {
-        $item: nth($list, $i);
-        $accumulator: append(
-            $accumulator,
-            call(get-function($function), $item)
-        );
+
+    @if type-of($list) == 'map' {
+        @each $key, $value in $list {
+            $accumulator: map-merge(
+                $accumulator,
+                (
+                    $key: call(get-function($function), $value)
+                )
+            );
+        }
+    } @else {
+        @for $i from 1 through length($list) {
+            $item: nth($list, $i);
+            $accumulator: append(
+                $accumulator,
+                call(get-function($function), $item)
+            );
+        }
     }
     @return $accumulator;
 }
