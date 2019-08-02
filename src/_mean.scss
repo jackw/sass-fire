@@ -1,0 +1,10 @@
+@import 'sum';
+
+/// Returns the median of the given list of numbers.
+///
+/// @param {List} list
+/// @return {Number}
+
+@function mean($list) {
+    @return sum($list) / length($list);
+}

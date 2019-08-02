@@ -1,0 +1,9 @@
+/// Divides two values.
+///
+/// @param {Number} a
+/// @param {Number} b
+/// @return {Number}
+
+@function divide($a, $b) {
+    @return $a / $b;
+}

@@ -1,0 +1,11 @@
+@import 'add';
+@import 'reduce';
+
+/// Adds a list of numbers together.
+///
+/// @param {List} list
+/// @return {Number}
+
+@function sum($list) {
+    @return reduce(add, 0, $list);
+}
