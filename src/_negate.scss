@@ -1,0 +1,8 @@
+/// Negates its argument.
+///
+/// @param {Number} n
+/// @return {Number}
+
+@function negate($n) {
+    @return -$n;
+}
