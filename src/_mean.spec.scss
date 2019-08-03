@@ -3,6 +3,6 @@
 
 @include describe('mean [function]') {
     @include it('should find the mean average of a list of numbers') {
-        @include assert-equal(mean((2, 7, 9)), 6);
+        @include assert-equal(mean(2, 7, 9), 6);
     }
 }
