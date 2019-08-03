@@ -1,0 +1,25 @@
+@import 'inc';
+
+/// Acts as multiple `prop`: array of keys in, array of values out. Preserves
+/// order.
+///
+/// @param {Array} names The property names to fetch
+/// @param {Object} obj The object to query
+/// @return {Array} The corresponding values or partially applied function.
+
+@function props($names, $obj) {
+    $length: length($names);
+    $result: ();
+    $idx: 1;
+
+    @while ($idx <= $length) {
+        $key: nth($names, $idx);
+        @if (map-has-key($obj, $key)) {
+            $result: append($result, map-get($obj, $key), 'comma');
+        } @else {
+            $result: append($result, false, 'comma');
+        }
+        $idx: inc($idx);
+    }
+    @return $result;
+}

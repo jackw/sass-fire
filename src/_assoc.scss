@@ -1,0 +1,13 @@
+/// Makes a shallow clone of an object, setting or overriding the specified
+/// property with the given value.
+///
+/// @param {String} prop The property name to set
+/// @param {*} val The new value
+/// @param {Object} obj The object to clone
+/// @return {Object} A new object equivalent to the original except for the changed property.
+/// @see dissoc
+/// @see pick
+
+@function assoc($prop, $val, $obj) {
+    @return map-merge($obj, (#{$prop}: $val));
+}

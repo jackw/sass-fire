@@ -1,0 +1,21 @@
+@import 'true';
+@import 'props';
+@import 'implode';
+@import 'compose';
+
+@include describe('props [function]') {
+    $_props-obj: (
+        a: 1,
+        b: 2,
+        c: 3,
+        d: 4
+    );
+
+    @include it('should return an of values') {
+        @include assert-equal(props(a d, $_props-obj), (1, 4));
+    }
+
+    @include it('should return false for unknown keys') {
+        @include assert-equal(props(a e f, $_props-obj), (1, false, false));
+    }
+}

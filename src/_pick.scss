@@ -1,0 +1,22 @@
+@import 'inc';
+
+/// Returns a partial copy of an object containing only the keys specified. If
+/// the key does not exist, the property is ignored.
+/// @param {Array} names an array of String property names to copy onto a new object
+/// @param {Object} obj The object to copy from
+/// @return {Object} A new object with only properties from `names` on it.
+/// @see omit
+/// @see props
+
+@function pick($names, $obj) {
+    $result: ();
+    $idx: 1;
+    @while ($idx <= length($names)) {
+        @if map-has-key($obj, nth($names, $idx)) {
+            $key: nth($names, $idx);
+            $result: map-merge($result, (#{$key}: map-get($obj, $key)));
+        }
+        $idx: inc($idx);
+    }
+    @return $result;
+}
