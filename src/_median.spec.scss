@@ -1,0 +1,11 @@
+@import 'true';
+@import 'median';
+
+@include describe('median [function]') {
+    @include it('should find the median average of an odd number of values') {
+        @include assert-equal(median(12, 5, 17, 1, 7), 7);
+    }
+    @include it('should find the median average of an even number of values') {
+        @include assert-equal(median(2.7, 8.3, 3.5, 5.1), 4.3);
+    }
+}

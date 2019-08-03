@@ -1,0 +1,11 @@
+@import 'multiply';
+@import 'reduce';
+
+/// Multiplies together all the elements of a list.
+///
+/// @param {Array} list An array of numbers
+/// @return {Number} The product of all the numbers in the list.
+
+@function product($list...) {
+    @return reduce(multiply, 1, $list);
+}

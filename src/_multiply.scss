@@ -1,0 +1,9 @@
+/// Multiplies two values.
+///
+/// @param {Number} a
+/// @param {Number} b
+/// @return {Number}
+
+@function multiply($a, $b) {
+    @return $a * $b;
+}
