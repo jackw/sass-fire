@@ -1,0 +1,11 @@
+@import 'split';
+@import 'implode';
+/// A function that always returns `true`.
+/// Any passed in parameters are ignored.
+///
+/// @return {bool} true
+
+@function trim($str) {
+    $result: split(' ', $str);
+    @return implode($xs: $result);
+}

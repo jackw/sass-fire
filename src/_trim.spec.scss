@@ -1,0 +1,11 @@
+@import 'true';
+@import 'trim';
+
+@include describe('trim [function]') {
+    @include it('should trim a string of whitespace') {
+        @include assert-equal(
+            trim('   the donkey jumped over the lazy snake    '),
+            ('thedonkeyjumpedoverthelazysnake')
+        );
+    }
+}
