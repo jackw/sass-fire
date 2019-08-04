@@ -3,6 +3,6 @@
 ///
 /// @return {bool} true
 
-@function T($rgs...) {
+@function T($args...) {
     @return true;
 }
