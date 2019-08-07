@@ -1,9 +1,9 @@
 @import 'split';
 @import 'implode';
-/// A function that always returns `true`.
-/// Any passed in parameters are ignored.
+/// Removes (strips) whitespace from both ends of the string.
 ///
-/// @return {bool} true
+/// @param {String} str The string to trim.
+/// @return {String} Trimmed version of `str`.
 
 @function trim($str) {
     $result: split(' ', $str);
