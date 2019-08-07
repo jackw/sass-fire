@@ -1,0 +1,12 @@
+@import 'hasPath';
+
+/// Returns whether or not an object has a property with the specified name
+///
+/// @param {String} prop The name of the property to check for.
+/// @param {Object} obj The object to query.
+/// @return {Boolean} Whether the property exists.
+
+@function has($prop, $obj) {
+    $_prop: quote($prop);
+    @return hasPath($_prop, $obj);
+}

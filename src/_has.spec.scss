@@ -1,0 +1,27 @@
+@import 'true';
+@import 'has';
+
+@include describe('has [function]') {
+    @include it('should return true if the prop exists') {
+        @include assert-equal(
+            has(
+                'name',
+                (
+                    name: 'alice'
+                )
+            ),
+            true
+        );
+    }
+    @include it('should return false if the prop does not exist') {
+        @include assert-equal(
+            has(
+                'flower',
+                (
+                    name: 'alice'
+                )
+            ),
+            false
+        );
+    }
+}

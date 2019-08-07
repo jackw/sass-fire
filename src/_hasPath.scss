@@ -1,0 +1,26 @@
+@import 'inc';
+
+/// Returns whether or not a path exists in an object.
+///
+/// @param {Array} path The path to use.
+/// @param {Object} obj The object to check the path in.
+/// @return {Boolean} Whether the path exists.
+
+@function hasPath($path, $obj) {
+    @if length($path) == 0 {
+        @return false;
+    }
+    $val: $obj;
+    $idx: 1;
+
+    @while $idx <= length($path) {
+        @if map-has-key($val, nth($path, $idx)) {
+            $val: map-get($val, nth($path, $idx));
+            $idx: inc($idx);
+        } @else {
+            @return false;
+        }
+    }
+
+    @return true;
+}
