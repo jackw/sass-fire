@@ -1,7 +1,7 @@
 /// Takes a predicate and a list and returns a pair of filterable lists of the same type of
 /// elements which do and do not satisfy, the predicate, respectively.
 ///
-/// @group partition
+/// @group list
 /// @param {Function} pred A predicate to determine which side the element belongs to.
 /// @param {Array} filterable the list to partition.
 /// @return {Array} An array, containing first the subset of elements that satisfy the
