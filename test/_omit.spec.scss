@@ -1,0 +1,16 @@
+@import 'true';
+@import '../src/omit';
+
+@include describe('omit [function]') {
+    @include it('should remove the keys from a map') {
+        $input: (
+            thor: 9000,
+            hulk: 10000,
+            captain-marvel: 12000
+        );
+        $expected: (
+            hulk: 10000
+        );
+        @include assert-equal(omit((thor, captain-marvel), $input), $expected);
+    }
+}

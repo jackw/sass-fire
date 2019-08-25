@@ -1,0 +1,20 @@
+@import 'true';
+@import '../src/assoc';
+
+@include describe('assoc [function]') {
+    $_assoc-obj: (
+        a: 1,
+        b: 2
+    );
+
+    @include it('should add the key and prop to the object') {
+        @include assert-equal(
+            assoc('c', 3, $_assoc-obj),
+            (
+                a: 1,
+                b: 2,
+                c: 3
+            )
+        );
+    }
+}

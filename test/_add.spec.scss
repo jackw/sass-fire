@@ -1,0 +1,8 @@
+@import 'true';
+@import '../src/add';
+
+@include describe('add [function]') {
+    @include it('should add two numbers together') {
+        @include assert-equal(add(10, 20), 30);
+    }
+}

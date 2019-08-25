@@ -1,0 +1,8 @@
+@import 'true';
+@import '../src/multiply';
+
+@include describe('multiply [function]') {
+    @include it('should multiply two numbers together') {
+        @include assert-equal(multiply(10, 20), 200);
+    }
+}

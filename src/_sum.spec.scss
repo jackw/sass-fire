@@ -1,8 +1,0 @@
-@import 'true';
-@import 'sum';
-
-@include describe('sum [function]') {
-    @include it('should sum a list of numbers') {
-        @include assert-equal(sum((10, 20, 30, 40, 50, 60, 70, 80, 90)), 450);
-    }
-}

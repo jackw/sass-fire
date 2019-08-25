@@ -1,8 +1,0 @@
-@import 'true';
-@import 'divide';
-
-@include describe('divide [function]') {
-    @include it('should divide two numbers') {
-        @include assert-equal(divide(10, 2), 5);
-    }
-}

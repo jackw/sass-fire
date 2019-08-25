@@ -1,8 +1,0 @@
-@import 'true';
-@import 'product';
-
-@include describe('product [function]') {
-    @include it('should product two numbers together') {
-        @include assert-equal(product(2, 4, 6, 8, 100, 1), 38400);
-    }
-}

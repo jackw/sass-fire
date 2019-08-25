@@ -1,0 +1,31 @@
+@import 'true';
+@import '../src/hasPath';
+
+@include describe('hasPath [function]') {
+    @include it('should return true if the path exists') {
+        @include assert-equal(
+            hasPath(
+                ('a', 'b'),
+                (
+                    a: (
+                        b: 2
+                    )
+                )
+            ),
+            true
+        );
+    }
+    @include it('should return false if the path does not exist') {
+        @include assert-equal(
+            hasPath(
+                ('a', 'b'),
+                (
+                    a: (
+                        c: 'nope'
+                    )
+                )
+            ),
+            false
+        );
+    }
+}

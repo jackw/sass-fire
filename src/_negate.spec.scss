@@ -1,8 +1,0 @@
-@import 'true';
-@import 'negate';
-
-@include describe('negate [function]') {
-    @include it('should negate the number') {
-        @include assert-equal(negate(25), -25);
-    }
-}

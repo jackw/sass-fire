@@ -1,0 +1,11 @@
+@import 'true';
+@import '../src/split';
+
+@include describe('split [function]') {
+    @include it('should split a string by delimiter') {
+        @include assert-equal(
+            split('-', 'a-b-c-d-e-f-g'),
+            ('a', 'b', 'c', 'd', 'e', 'f', 'g')
+        );
+    }
+}

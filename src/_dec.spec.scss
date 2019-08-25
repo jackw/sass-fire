@@ -1,8 +1,0 @@
-@import 'true';
-@import 'dec';
-
-@include describe('dec [function]') {
-    @include it('should deincrement the number by 1') {
-        @include assert-equal(dec(20), 19);
-    }
-}

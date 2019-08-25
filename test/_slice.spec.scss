@@ -1,0 +1,11 @@
+@import 'true';
+@import '../src/slice';
+
+@include describe('slice [function]') {
+    @include it('should slice a list at from-index to to-index') {
+        @include assert-equal(slice(5, 9, (1 2 3 4 5 6 7 8 9)), (5 6 7 8 9));
+    }
+    @include it('should slice a string at from-index to to-index') {
+        @include assert-equal(slice(1, 4, 'hello world'), 'hell');
+    }
+}
