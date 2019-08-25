@@ -5,6 +5,7 @@
 
 /// Performs right-to-left function composition.
 ///
+/// @group function
 /// @param {Function...} functions... The functions to compose
 /// @return {Function}
 /// @see pipe

@@ -2,6 +2,7 @@
 
 /// Returns whether or not a path exists in an object.
 ///
+/// @group object
 /// @param {Array} path The path to use.
 /// @param {Object} obj The object to check the path in.
 /// @return {Boolean} Whether the path exists.

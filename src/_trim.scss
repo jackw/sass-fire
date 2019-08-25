@@ -2,6 +2,7 @@
 @import 'implode';
 /// Removes (strips) whitespace from both ends of the string.
 ///
+/// @group string
 /// @param {String} str The string to trim.
 /// @return {String} Trimmed version of `str`.
 

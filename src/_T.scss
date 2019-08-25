@@ -1,6 +1,7 @@
 /// A function that always returns `true`.
 /// Any passed in parameters are ignored.
 ///
+/// @group function
 /// @return {bool} true
 
 @function T($args...) {

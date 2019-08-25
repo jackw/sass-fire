@@ -2,6 +2,8 @@
 
 /// Returns a partial copy of an object containing only the keys specified. If
 /// the key does not exist, the property is ignored.
+///
+/// @group object
 /// @param {Array} names an array of String property names to copy onto a new object
 /// @param {Object} obj The object to copy from
 /// @return {Object} A new object with only properties from `names` on it.

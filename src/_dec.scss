@@ -1,6 +1,8 @@
 @import 'subtract';
 
 /// Deincrements its argument.
+///
+/// @group math
 /// @param {Number} n
 /// @return {Number} n - 1
 /// @see inc

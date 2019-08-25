@@ -1,6 +1,8 @@
 /// Returns a string made by inserting the `separator` between each element and
-/// concatenating all the elements into a single string.
+/// concatenating all the elements into a single string. Ramda defines this as
+/// join but sass has it's own join method.
 ///
+/// @group list
 /// @param {Number|String} separator The string used to separate the elements.
 /// @param {Array} xs The elements to join into a string.
 /// @return {String} str The string made by concatenating `xs` with `separator`.

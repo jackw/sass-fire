@@ -5,6 +5,7 @@
 
 /// Performs left-to-right function composition.
 ///
+/// @group function
 /// @param {Function...} functions... The functions to compose
 /// @return {Function}
 /// @see compose

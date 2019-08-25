@@ -2,6 +2,7 @@
 
 /// Returns a new object that does not contain a `prop` property.
 ///
+/// @group object
 /// @param {String} prop The name of the property to dissociate
 /// @param {Object} obj The object to clone
 /// @return {Object} A new object equivalent to the original but without the specified property

@@ -3,6 +3,7 @@
 /// applies the function to each of the functor's values, and returns
 /// a functor of the same shape.
 ///
+/// @group list
 /// @param {Function} fn The function to be called on every element of the input `list`.
 /// @param {Array} list The list to be iterated over.
 /// @return {Array} The new list.

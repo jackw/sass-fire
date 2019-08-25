@@ -3,6 +3,7 @@
 /// Acts as multiple `prop`: array of keys in, array of values out. Preserves
 /// order.
 ///
+/// @group object
 /// @param {Array} names The property names to fetch
 /// @param {Object} obj The object to query
 /// @return {Array} The corresponding values or partially applied function.

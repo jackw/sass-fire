@@ -1,6 +1,7 @@
 /// A function that always returns `false`.
 /// Any passed in parameters are ignored.
 ///
+/// @group function
 /// @return {bool} false
 
 @function F($args...) {

@@ -2,6 +2,7 @@
 /// the iterator function and passing it an accumulator value and the current
 /// value from the array, and then passing the result to the next call.
 ///
+/// @group list
 /// @param {Function} fn The iterator function. Receives two values, the accumulator and the
 /// current element from the array.
 /// @param {*} acc The accumulator value.

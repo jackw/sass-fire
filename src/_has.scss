@@ -2,6 +2,7 @@
 
 /// Returns whether or not an object has a property with the specified name
 ///
+/// @group object
 /// @param {String} prop The name of the property to check for.
 /// @param {Object} obj The object to query.
 /// @return {Boolean} Whether the property exists.

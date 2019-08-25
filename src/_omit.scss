@@ -1,15 +1,14 @@
 /// Returns a partial copy of an object omitting the specified keys
 ///
+/// @group object
 /// @param {List} $keys - keys to remove from the map
 /// @param {Map} $map - the map to copy from
-///
 /// @return {Map} A new map without the properties from $keys.
 ///
 /// @example scss - omit
 ///
 /// $map-omit: omit((tom, harry), (tom: 1, dick: 2, harry: 3);
 /// // $map-omit -> (dick: 2);
-///
 
 @function omit($keys, $map) {
     $result: ();
