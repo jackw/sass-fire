@@ -1,0 +1,32 @@
+@import 'true';
+@import '../src/merge-with-key';
+
+@include describe('merge-with-key [function]') {
+    @include it('should do some shit') {
+        $left: (
+            'a': true,
+            'thing': 'foo',
+            'values': 10 20
+        );
+
+        $right: (
+            'b': true,
+            'thing': 'bar',
+            'values': 15 25
+        );
+
+        $expected: (
+            'a': true,
+            'b': true,
+            'thing': 'bar',
+            'values': (
+                10 20 15 35
+            )
+        );
+
+        @include assert-equal(
+            merge-with-key(
+               
+        );
+    }
+}
