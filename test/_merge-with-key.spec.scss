@@ -1,32 +1,35 @@
 @import 'true';
 @import '../src/merge-with-key';
+@import '../src/concat';
+
+@function _merge-with-key-concat-values($k, $l, $r) {
+    @return if($k == 'values', concat($l, $r), $r);
+}
 
 @include describe('merge-with-key [function]') {
     @include it('should do some shit') {
         $left: (
             'a': true,
             'thing': 'foo',
-            'values': 10 20
+            'values': [10 20]
         );
 
         $right: (
             'b': true,
             'thing': 'bar',
-            'values': 15 25
+            'values': [15 25]
         );
 
         $expected: (
             'a': true,
             'b': true,
             'thing': 'bar',
-            'values': (
-                10 20 15 35
-            )
+            'values': [10 20 15 25]
         );
 
         @include assert-equal(
-            merge-with-key(
-               
+            merge-with-key(_merge-with-key-concat-values, $left, $right),
+            $expected
         );
     }
 }

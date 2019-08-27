@@ -14,5 +14,30 @@
 /// @see mergeWith
 
 @function merge-with-key($fn, $l, $r) {
-    @return map-merge($l, $r);
+    $result: ();
+    $k: '';
+    @each $key, $value in $l {
+        @if map-has-key($r, $key) {
+            $k: (
+                #{$key}:
+                    call(
+                        get-function($fn),
+                        $key,
+                        map-get($l, $key),
+                        map-get($r, $key)
+                    )
+            );
+        } @else {
+            $k: (#{$key}: map-get($l, $key));
+        }
+        $result: map-merge($result, $k);
+    }
+
+    @each $key, $value in $r {
+        @if map-has-key($r, $key) and not map-has-key($result, $key) {
+            $result: map-merge($result, (#{$key}: map-get($r, $key)));
+        }
+    }
+
+    @return $result;
 }
