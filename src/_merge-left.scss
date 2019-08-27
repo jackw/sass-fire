@@ -1,3 +1,5 @@
+@import 'merge';
+
 /// Create a new object with the own properties of the first object merged with
 /// the own properties of the second object. If a key exists in both objects,
 /// the value from the first object will be used.
@@ -13,5 +15,5 @@
 /// @see mergeWithKey
 
 @function merge-left($l, $r) {
-    @return map-merge($r, $l);
+    @return merge($r, $l);
 }
