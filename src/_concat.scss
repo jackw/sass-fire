@@ -1,0 +1,16 @@
+/// Returns the result of concatenating the given lists or strings.
+///
+/// @group list
+/// @param {Array|String} a The first list
+/// @param {Array|String} b The second list
+/// @return {Array|String} A list consisting of the elements of `firstList`
+/// followed by the elements of `secondList`.
+
+@function concat($a, $b) {
+    @if type-of($a) == 'list' and type-of($b) == 'list' {
+        @return join($a, $b);
+    }
+    @if type-of($a) == 'string' and type-of($b) == 'string' {
+        @return #{$a}#{$b};
+    }
+}

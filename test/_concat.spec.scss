@@ -1,0 +1,11 @@
+@import 'true';
+@import '../src/concat';
+
+@include describe('concat [function]') {
+    @include it('should join lists together') {
+        @include assert-equal(concat([1, 2, 3], [4, 5, 6]), [1, 2, 3, 4, 5, 6]);
+    }
+    @include it('should join strings together') {
+        @include assert-equal(concat('ABC', 'DEF'), 'ABCDEF');
+    }
+}
