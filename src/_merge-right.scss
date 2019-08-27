@@ -1,17 +1,19 @@
-/// Create a new object with the own properties of the first object merged with
+@import 'merge';
+
+/// Creates a new object with the own properties of the first object merged with
 /// the own properties of the second object. If a key exists in both objects,
-/// the value from the first object will be used.
+/// the value from the second object will be used.
 ///
 /// @group object
 /// @param {Object} l left object
 /// @param {Object} r right object
 /// @return {Object} merged object
 ///
-/// @see merge-right
+/// @see merge-left
 /// @see mergeDeepRight
 /// @see mergeWith
 /// @see mergeWithKey
 
-@function merge-left($l, $r) {
-    @return map-merge($r, $l);
+@function merge-right($l, $r) {
+    @return merge($l, $r);
 }

@@ -1,0 +1,40 @@
+@import 'true';
+@import '../src/merge-left';
+
+@include describe('merge-left [function]') {
+    @include it('should merge two objects into a single object') {
+        @include assert-equal(
+            merge-left(
+                (
+                    'age': 40
+                ),
+                (
+                    'name': 'fred',
+                    'age': 10
+                )
+            ),
+            (
+                'name': 'fred',
+                'age': 40
+            )
+        );
+    }
+
+    @include it('should override props in objects') {
+        @include assert-equal(
+            merge-left(
+                (
+                    x: 0
+                ),
+                (
+                    x: 5,
+                    y: 2
+                )
+            ),
+            (
+                x: 0,
+                y: 2
+            )
+        );
+    }
+}
