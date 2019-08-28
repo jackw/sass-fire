@@ -1,0 +1,44 @@
+@import 'merge-with-key';
+
+// as gross as this is there is no way that I know of to get around it. :(
+$_sass-fire-merge-deep-with-key-fn: '' !global;
+
+/// Creates a new object with the own properties of the two provided objects.
+/// If a key exists in both objects:
+/// - and both associated values are also objects then the values will be
+///   recursively merged.
+/// - otherwise the provided function is applied to the key and associated values
+///   using the resulting value as the new value associated with the key.
+/// If a key only exists in one object, the value will be associated with the key
+/// of the resulting object.
+///
+/// @group object
+/// @param {Function} fn function to call when two keys match
+/// @param {Object} l-obj left object
+/// @param {Object} r-obj right object
+/// @return {Object} merged object
+///
+/// @see merge-with-key
+/// @see merge-deep-with
+
+@function merge-deep-with-key($fn, $l-obj, $r-obj) {
+    $_sass-fire-merge-deep-with-key-fn: $fn !global;
+    @return merge-with-key(_sass-fire-merge-deep-caller, $l-obj, $r-obj);
+}
+
+@function _sass-fire-merge-deep-caller($k, $l-val, $r-val) {
+    @if type-of($l-val) == 'map' and type-of($r-val) == 'map' {
+        @return merge-deep-with-key(
+            $_sass-fire-merge-deep-with-key-fn,
+            $l-val,
+            $r-val
+        );
+    } @else {
+        @return call(
+            get-function($_sass-fire-merge-deep-with-key-fn),
+            $k,
+            $l-val,
+            $r-val
+        );
+    }
+}

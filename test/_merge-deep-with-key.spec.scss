@@ -1,0 +1,43 @@
+@import 'true';
+@import '../src/merge-deep-with-key';
+@import '../src/concat';
+
+@function concat-values($k, $l, $r) {
+    @return if($k == 'values', concat($l, $r), $r);
+}
+
+@include describe('merge-deep-with-key [function]') {
+    @include it(
+        'should recursively merge two objects, running fn if same keys exist'
+    ) {
+        $left: (
+            'a': true,
+            'c': (
+                'thing': 'foo',
+                'values': [10 20]
+            )
+        );
+
+        $right: (
+            'b': true,
+            'c': (
+                'thing': 'bar',
+                'values': [15 25]
+            )
+        );
+
+        $expected: (
+            'a': true,
+            'b': true,
+            'c': (
+                'thing': 'bar',
+                'values': [10 20 15 25]
+            )
+        );
+
+        @include assert-equal(
+            merge-deep-with-key(concat-values, $left, $right),
+            $expected
+        );
+    }
+}
