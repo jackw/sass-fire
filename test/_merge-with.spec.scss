@@ -1,0 +1,25 @@
+@import 'true';
+@import '../src/merge-with';
+@import '../src/concat';
+
+@include describe('merge-with [function]') {
+    @include it('should merge two objects, running fn if same keys exist') {
+        $left: (
+            'a': true,
+            'values': [10 20]
+        );
+
+        $right: (
+            'b': true,
+            'values': [15 25]
+        );
+
+        $expected: (
+            'a': true,
+            'b': true,
+            'values': [10 20 15 25]
+        );
+
+        @include assert-equal(merge-with(concat, $left, $right), $expected);
+    }
+}
