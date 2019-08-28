@@ -11,8 +11,8 @@
 ///
 /// @see merge-left
 /// @see mergeDeepRight
-/// @see mergeWith
-/// @see mergeWithKey
+/// @see merge-with
+/// @see merge-with-key
 
 @function merge-right($l, $r) {
     @return merge($l, $r);

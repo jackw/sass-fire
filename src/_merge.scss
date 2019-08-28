@@ -7,10 +7,10 @@
 /// @param {Object} r right object
 /// @return {Object} merged object
 ///
-/// @see mergeRight
+/// @see merge-right
 /// @see mergeDeepRight
-/// @see mergeWith
-/// @see mergeWithKey
+/// @see merge-with
+/// @see merge-with-key
 
 @function merge($l, $r) {
     @return map-merge($l, $r);
