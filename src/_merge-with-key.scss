@@ -11,11 +11,11 @@
 ///
 /// @see mergeDeepWithKey
 /// @see merge
-/// @see mergeWith
+/// @see merge-with
 
 @function merge-with-key($fn, $l, $r) {
     $result: ();
-    $k: '';
+    $k: ();
     @each $key, $value in $l {
         @if map-has-key($r, $key) {
             $k: (
@@ -34,8 +34,8 @@
     }
 
     @each $key, $value in $r {
-        @if map-has-key($r, $key) and not map-has-key($result, $key) {
-            $result: map-merge($result, (#{$key}: map-get($r, $key)));
+        @if not map-has-key($result, $key) {
+            $result: map-merge($result, (#{$key}: $value));
         }
     }
 

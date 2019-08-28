@@ -7,7 +7,7 @@
 }
 
 @include describe('merge-with-key [function]') {
-    @include it('should do some shit') {
+    @include it('should merge two objects, running fn if same keys exist') {
         $left: (
             'a': true,
             'thing': 'foo',
