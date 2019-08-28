@@ -23,10 +23,14 @@ $_sass-fire-merge-deep-with-key-fn: '' !global;
 
 @function merge-deep-with-key($fn, $l-obj, $r-obj) {
     $_sass-fire-merge-deep-with-key-fn: $fn !global;
-    @return merge-with-key(_sass-fire-merge-deep-caller, $l-obj, $r-obj);
+    @return merge-with-key(
+        _sass-fire-merge-deep-with-key-caller,
+        $l-obj,
+        $r-obj
+    );
 }
 
-@function _sass-fire-merge-deep-caller($k, $l-val, $r-val) {
+@function _sass-fire-merge-deep-with-key-caller($k, $l-val, $r-val) {
     @if type-of($l-val) == 'map' and type-of($r-val) == 'map' {
         @return merge-deep-with-key(
             $_sass-fire-merge-deep-with-key-fn,
