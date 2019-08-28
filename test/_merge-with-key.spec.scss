@@ -2,7 +2,7 @@
 @import '../src/merge-with-key';
 @import '../src/concat';
 
-@function _merge-with-key-concat-values($k, $l, $r) {
+@function concat-values($k, $l, $r) {
     @return if($k == 'values', concat($l, $r), $r);
 }
 
@@ -28,7 +28,7 @@
         );
 
         @include assert-equal(
-            merge-with-key(_merge-with-key-concat-values, $left, $right),
+            merge-with-key(concat-values, $left, $right),
             $expected
         );
     }

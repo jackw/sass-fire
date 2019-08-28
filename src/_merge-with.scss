@@ -20,10 +20,10 @@ $_sass-fire-merge-with-key-fn: '' !global;
 
 @function merge-with($fn, $l, $r) {
     $_sass-fire-merge-with-key-fn: $fn !global;
-    @return merge-with-key(_sass-fire-merge-with-callee, $l, $r);
+    @return merge-with-key(_sass-fire-merge-with-caller, $l, $r);
 }
 
 // calls the passed in merge-with function without key
-@function _sass-fire-merge-with-callee($k, $l, $r) {
+@function _sass-fire-merge-with-caller($k, $l, $r) {
     @return call(get-function($_sass-fire-merge-with-key-fn), $l, $r);
 }
