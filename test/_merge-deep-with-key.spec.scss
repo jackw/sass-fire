@@ -1,6 +1,5 @@
 @import 'true';
 @import '../src/merge-deep-with-key';
-@import '../src/concat';
 
 @function last($k, $x, $y) {
     @return $y;
