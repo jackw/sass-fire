@@ -1,14 +1,13 @@
 @import 'merge-deep-with-key';
 
-/// Creates a new object with the own properties of the two provided objects. If
-/// a key exists in both objects, the provided function is applied to the values
-/// associated with the key in each object, with the result being used as the
-/// value associated with the key in the returned object.
+/// Creates a new object with the own properties of the first object merged with
+/// the own properties of the second object. If a key exists in both objects:
+/// - and both values are objects, the two values will be recursively merged
+/// - otherwise the value from the second object will be used.
 ///
 /// @group object
-/// @param {Function} fn function to call when two keys match
-/// @param {Object} l left object
-/// @param {Object} r right object
+/// @param {Object} l-obj left object
+/// @param {Object} r-obj right object
 /// @return {Object} merged object
 ///
 /// @see merge
