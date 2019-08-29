@@ -2,7 +2,7 @@
 @import '../src/merge-right';
 
 @include describe('merge-right [function]') {
-    @include it('should merge two objects into a single object') {
+    @include it('should merge two objects and return a single object') {
         @include assert-equal(
             merge-right(
                 (
@@ -20,7 +20,9 @@
         );
     }
 
-    @include it('should override props in objects') {
+    @include it(
+        'should override props in the first object with props in the second object'
+    ) {
         @include assert-equal(
             merge-right(
                 (

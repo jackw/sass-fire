@@ -20,7 +20,9 @@
         );
     }
 
-    @include it('should override props in objects') {
+    @include it(
+        'should override props in the first object with props in the second object'
+    ) {
         @include assert-equal(
             merge(
                 (

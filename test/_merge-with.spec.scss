@@ -2,7 +2,32 @@
 @import '../src/merge-with';
 @import '../src/concat';
 
+@function last($x, $y) {
+    @return $y;
+}
+
 @include describe('merge-with [function]') {
+    @include it('should merge two objects and return a single object') {
+        $left: (
+            w: 1,
+            x: 2
+        );
+
+        $right: (
+            y: 3,
+            z: 4
+        );
+
+        $expected: (
+            w: 1,
+            x: 2,
+            y: 3,
+            z: 4
+        );
+
+        @include assert-equal(merge-with(last, $left, $right), $expected);
+    }
+
     @include it('should merge two objects, running fn if same keys exist') {
         $left: (
             'a': true,
