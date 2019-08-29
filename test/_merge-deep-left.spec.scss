@@ -1,0 +1,71 @@
+@import 'true';
+@import '../src/merge-deep-left';
+
+@include describe('merge-deep-left [function]') {
+    @include it(
+        'takes two objects, recursively merges their own properties and returns a new object'
+    ) {
+        $left: (
+            'w': 1,
+            'x': 2,
+            'y': (
+                'z': 3
+            )
+        );
+
+        $right: (
+            'a': 4,
+            'b': 5,
+            'c': (
+                'd': 6
+            )
+        );
+
+        $expected: (
+            'w': 1,
+            'x': 2,
+            'y': (
+                'z': 3
+            ),
+            'a': 4,
+            'b': 5,
+            'c': (
+                'd': 6
+            )
+        );
+
+        @include assert-equal(merge-deep-left($left, $right), $expected);
+    }
+
+    @include it(
+        'overrides properties in the second object with properties in the first object'
+    ) {
+        $left: (
+            'a': (
+                'b': 1,
+                'c': 2
+            ),
+            'y': 0
+        );
+
+        $right: (
+            'a': (
+                'b': 3,
+                'd': 4
+            ),
+            'z': 0
+        );
+
+        $expected: (
+            'a': (
+                'b': 1,
+                'c': 2,
+                'd': 4
+            ),
+            'y': 0,
+            'z': 0
+        );
+
+        @include assert-equal(merge-deep-left($left, $right), $expected);
+    }
+}

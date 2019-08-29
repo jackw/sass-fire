@@ -1,0 +1,15 @@
+/// Merges a list of objects together into one object.
+///
+/// @group list
+/// @param {List} list array of objects
+/// @return {Object} the merged object
+/// @see reduce
+
+@function merge-all($list) {
+    $result: ();
+    @each $item in $list {
+        $result: map-merge($result, $item);
+    }
+
+    @return $result;
+}

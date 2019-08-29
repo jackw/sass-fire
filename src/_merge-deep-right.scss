@@ -1,0 +1,29 @@
+@import 'merge-deep-with-key';
+
+/// Creates a new object with the own properties of the first object merged with
+/// the own properties of the second object. If a key exists in both objects:
+/// - and both values are objects, the two values will be recursively merged
+/// - otherwise the value from the second object will be used.
+///
+/// @group object
+/// @param {Object} l-obj left object
+/// @param {Object} r-obj right object
+/// @return {Object} merged object
+///
+/// @see merge
+/// @see merge-deep-left
+/// @see merge-deep-with
+/// @see merge-deep-with-key
+
+@function merge-deep-right($l-obj, $r-obj) {
+    @return merge-deep-with-key(
+        _sass-fire-merge-deep-right-caller,
+        $l-obj,
+        $r-obj
+    );
+}
+
+// calls the passed in merge-right function without key
+@function _sass-fire-merge-deep-right-caller($k, $l-val, $r-val) {
+    @return $r-val;
+}

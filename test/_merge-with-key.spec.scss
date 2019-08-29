@@ -1,0 +1,62 @@
+@import 'true';
+@import '../src/merge-with-key';
+@import '../src/concat';
+
+@function concat-values($k, $l, $r) {
+    @return if($k == 'values', concat($l, $r), $r);
+}
+
+@function last($k, $x, $y) {
+    @return $y;
+}
+
+@include describe('merge-with-key [function]') {
+    @include it(
+        'should take two objects, merge their own properties and return a new object'
+    ) {
+        $left: (
+            w: 1,
+            x: 2
+        );
+
+        $right: (
+            y: 3,
+            z: 4
+        );
+
+        $expected: (
+            w: 1,
+            x: 2,
+            y: 3,
+            z: 4
+        );
+
+        @include assert-equal(merge-with-key(last, $left, $right), $expected);
+    }
+
+    @include it('should merge two objects, running fn if same keys exist') {
+        $left: (
+            'a': true,
+            'thing': 'foo',
+            'values': [10 20]
+        );
+
+        $right: (
+            'b': true,
+            'thing': 'bar',
+            'values': [15 25]
+        );
+
+        $expected: (
+            'a': true,
+            'b': true,
+            'thing': 'bar',
+            'values': [10 20 15 25]
+        );
+
+        @include assert-equal(
+            merge-with-key(concat-values, $left, $right),
+            $expected
+        );
+    }
+}

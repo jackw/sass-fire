@@ -1,0 +1,48 @@
+@import 'true';
+@import '../src/merge-all';
+
+@include describe('merge-all [function]') {
+    @include it('should merge all objects into a single object') {
+        $_merge-all-list: (
+            (
+                foo: 1
+            ),
+            (
+                bar: 2
+            ),
+            (
+                baz: 3
+            )
+        );
+        @include assert-equal(
+            merge-all($_merge-all-list),
+            (
+                foo: 1,
+                bar: 2,
+                baz: 3
+            )
+        );
+    }
+
+    @include it('should override props in objects') {
+        $_merge-all-list: (
+            (
+                foo: 1
+            ),
+            (
+                foo: 2
+            ),
+            (
+                bar: 2
+            )
+        );
+
+        @include assert-equal(
+            merge-all($_merge-all-list),
+            (
+                foo: 2,
+                bar: 2
+            )
+        );
+    }
+}

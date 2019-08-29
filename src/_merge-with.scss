@@ -1,0 +1,29 @@
+@import 'merge-with-key';
+
+// as gross as this is there is no way that I know of to get around it. :(
+$_sass-fire-merge-with-key-fn: '' !global;
+
+/// Creates a new object with the own properties of the two provided objects. If
+/// a key exists in both objects, the provided function is applied to the values
+/// associated with the key in each object, with the result being used as the
+/// value associated with the key in the returned object.
+///
+/// @group object
+/// @param {Function} fn function to call when two keys match
+/// @param {Object} l left object
+/// @param {Object} r right object
+/// @return {Object} merged object
+///
+/// @see merge-deep-with-key
+/// @see merge
+/// @see merge-with-key
+
+@function merge-with($fn, $l, $r) {
+    $_sass-fire-merge-with-key-fn: $fn !global;
+    @return merge-with-key(_sass-fire-merge-with-caller, $l, $r);
+}
+
+// calls the passed in merge-with function without key
+@function _sass-fire-merge-with-caller($k, $l, $r) {
+    @return call(get-function($_sass-fire-merge-with-key-fn), $l, $r);
+}

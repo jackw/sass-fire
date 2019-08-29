@@ -1,0 +1,87 @@
+@import 'true';
+@import '../src/merge-deep-with-key';
+
+@function last($k, $x, $y) {
+    @return $y;
+}
+
+@function prefix-key($k, $a, $b) {
+    @return $k + $a + $b;
+}
+
+@include describe('merge-deep-with-key [function]') {
+    @include it(
+        'takes two objects, recursively merges their own properties and returns a new object'
+    ) {
+        $left: (
+            'w': 1,
+            'x': 2,
+            'y': (
+                'z': 3
+            )
+        );
+
+        $right: (
+            'a': 4,
+            'b': 5,
+            'c': (
+                'd': 6
+            )
+        );
+
+        $expected: (
+            'w': 1,
+            'x': 2,
+            'y': (
+                'z': 3
+            ),
+            'a': 4,
+            'b': 5,
+            'c': (
+                'd': 6
+            )
+        );
+
+        @include assert-equal(
+            merge-deep-with-key(last, $left, $right),
+            $expected
+        );
+    }
+
+    @include it(
+        'applies the provided function to the key, the value from the first object' +
+            ' and the value from the second object to determine the value for keys that' +
+            ' exist in both objects'
+    ) {
+        $left: (
+            'a': (
+                'b': 'B1',
+                'c': 'C'
+            ),
+            'y': 'Y'
+        );
+
+        $right: (
+            'a': (
+                'b': 'B2',
+                'd': 'D'
+            ),
+            'z': 'Z'
+        );
+
+        $expected: (
+            'a': (
+                'b': 'bB1B2',
+                'c': 'C',
+                'd': 'D'
+            ),
+            'y': 'Y',
+            'z': 'Z'
+        );
+
+        @include assert-equal(
+            merge-deep-with-key(prefix-key, $left, $right),
+            $expected
+        );
+    }
+}

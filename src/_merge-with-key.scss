@@ -1,0 +1,43 @@
+/// Creates a new object with the own properties of the two provided objects. If
+/// a key exists in both objects, the provided function is applied to the key
+/// and the values associated with the key in each object, with the result being
+/// used as the value associated with the key in the returned object.
+///
+/// @group object
+/// @param {Function} fn function to call when two keys match
+/// @param {Object} l left object
+/// @param {Object} r right object
+/// @return {Object} merged object
+///
+/// @see merge-deep-with-key
+/// @see merge
+/// @see merge-with
+
+@function merge-with-key($fn, $l, $r) {
+    $result: ();
+    $k: ();
+    @each $key, $value in $l {
+        @if map-has-key($r, $key) {
+            $k: (
+                #{$key}:
+                    call(
+                        get-function($fn),
+                        $key,
+                        map-get($l, $key),
+                        map-get($r, $key)
+                    )
+            );
+        } @else {
+            $k: (#{$key}: map-get($l, $key));
+        }
+        $result: map-merge($result, $k);
+    }
+
+    @each $key, $value in $r {
+        @if not map-has-key($result, $key) {
+            $result: map-merge($result, (#{$key}: $value));
+        }
+    }
+
+    @return $result;
+}
