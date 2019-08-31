@@ -1,0 +1,10 @@
+@import 'true';
+@import '../src/without';
+
+@include describe('without [function]') {
+    @include it(
+        'returns an array not containing values in the first argument'
+    ) {
+        @include assert-equal(without([1, 2], [1, 2, 1, 4, 5]), [4, 5]);
+    }
+}
