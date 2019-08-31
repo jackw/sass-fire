@@ -2,7 +2,7 @@
     "name": "sass-fire",
     "version": "0.0.0",
     "main": "./src/index.scss",
-    "repository": "git@github.com:jackw/cudl-fp.git",
+    "repository": "git@github.com:jackw/sass-fire.git",
     "author": "Jack Westbrook <jack.westbrook@gmail.com>",
     "license": "MIT",
     "scripts": {
