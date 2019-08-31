@@ -14,7 +14,7 @@
     "devDependencies": {
         "cz-conventional-changelog": "3.0.2",
         "glob": "^7.1.4",
-        "jest": "^24.8.0",
+        "jest": "^24.9.0",
         "node-sass": "^4.12.0",
         "prettier": "^1.18.2",
         "sass-true": "^5.0.0",
@@ -23,7 +23,7 @@
         "stylelint-config-prettier": "^5.2.0",
         "stylelint-config-sass-guidelines": "^6.0.0",
         "stylelint-prettier": "^1.1.1",
-        "stylelint-scss": "^3.9.2",
+        "stylelint-scss": "^3.10.0",
         "watch": "^1.0.2"
     },
     "jest": {
