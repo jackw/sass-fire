@@ -8,12 +8,12 @@ steps:
     commands:
     - yarn
 
-	- name: lint
-		image: node
-		commands:
-		- yarn lint
+  - name: lint
+    image: node
+    commands:
+    - yarn lint
 
-	- name: test
-		image: node
-		commands:
-		- yarn test
+  - name: test
+    image: node
+    commands:
+    - yarn test
