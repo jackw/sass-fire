@@ -3,9 +3,17 @@ type: docker
 name: default
 
 steps:
-- name: lint-test
-  image: node
-  commands:
-  - yarn
-  - yarn lint
-  - yarn test
+  - name: install dependencies
+    image: node
+    commands:
+    - yarn
+
+	- name: lint
+		image: node
+		commands:
+		- yarn lint
+
+	- name: test
+		image: node
+		commands:
+		- yarn test
