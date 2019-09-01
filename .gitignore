@@ -2,3 +2,5 @@ node_modules/
 .sass-cache/
 .vscode/
 *.css.map
+yarn-error.log
+.DS_Store
