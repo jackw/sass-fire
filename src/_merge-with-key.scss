@@ -12,6 +12,15 @@
 /// @see merge-deep-with-key
 /// @see merge
 /// @see merge-with
+///
+/// @example scss - merge-with-key
+///   @function concat-values($k, $l, $r) { @return if($k == 'values', concat($l, $r), $r);
+///
+///   $merge-objs: merge-with-key(concat-values,
+///     ( 'a': true, 'thing': 'foo', 'values': [10 20] )
+///     ( 'b': true, 'thing': 'bar', 'values': [15 25] )
+///   );
+///   @debug $merge-objs; //=> ( a: true, b: true, thing: 'bar', values: [10, 20, 15, 35] )
 
 @function merge-with-key($fn, $l, $r) {
     $result: ();

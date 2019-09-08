@@ -5,6 +5,12 @@
 /// @param {String} sep The pattern.
 /// @param {String} str The string to separate into an array.
 /// @return {Array} The array of strings from `str` separated by `str`.
+/// @see implode
+///
+/// @example scss - split
+///
+///   $splitted: split('-', 'a-b-c-d-e-f-g');
+///   @debug $splitted; //=> ('a', 'b', 'c', 'd', 'e', 'f', 'g')
 
 @function split($sep, $str) {
     $delimiter-length: str-length($sep);

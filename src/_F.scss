@@ -3,6 +3,11 @@
 ///
 /// @group function
 /// @return {bool} false
+///
+/// @example scss - F
+///
+///   $not-true: F();
+///   @debug $not-true; //=> false
 
 @function F($args...) {
     @return false;

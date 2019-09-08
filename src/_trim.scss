@@ -5,6 +5,11 @@
 /// @group string
 /// @param {String} str The string to trim.
 /// @return {String} Trimmed version of `str`.
+///
+/// @example scss - trim
+///
+///   $trimmed: trim('   the donkey jumped over the lazy snake    ');
+///   @debug $trimmed; //=> 'thedonkeyjumpedoverthelazysnake'
 
 @function trim($str) {
     $result: split(' ', $str);

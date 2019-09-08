@@ -6,6 +6,11 @@
 /// @group math
 /// @param {List} list
 /// @return {Number}
+///
+/// @example scss - sum
+///
+///   $add-list: sum((10, 20, 30, 40, 50, 60, 70, 80, 90))
+///   @debug $add-list; //=> 450
 
 @function sum($list) {
     @return reduce(add, 0, $list);

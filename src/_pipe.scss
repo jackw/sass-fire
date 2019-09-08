@@ -9,6 +9,15 @@
 /// @param {Function...} functions... The functions to compose
 /// @return {Function}
 /// @see compose
+///
+/// @example scss - pipe
+///
+///   $input: ('a', 'b', 'c');
+///   $output: pipe(
+///     (join, ('d', 'e')),
+///     (implode, '-'),
+///     $input);
+///   @debug $output; //=> 'd-e-a-b-c'
 
 @function pipe($params...) {
     $function-list: init($params);

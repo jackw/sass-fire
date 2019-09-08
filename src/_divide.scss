@@ -4,6 +4,11 @@
 /// @param {Number} a
 /// @param {Number} b
 /// @return {Number}
+///
+/// @example scss - divide
+///
+///   $divide-numbers: divide(10, 2);
+///   @debug $divide-numbers; //=> 5
 
 @function divide($a, $b) {
     @return $a / $b;

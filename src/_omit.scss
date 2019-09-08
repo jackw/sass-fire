@@ -7,8 +7,8 @@
 ///
 /// @example scss - omit
 ///
-/// $map-omit: omit((tom, harry), (tom: 1, dick: 2, harry: 3);
-/// // $map-omit -> (dick: 2);
+///   $map-omit: omit((tom, harry), (tom: 1, dick: 2, harry: 3));
+///   @debug $map-omit; //=> (dick: 2)
 
 @function omit($keys, $map) {
     $result: ();

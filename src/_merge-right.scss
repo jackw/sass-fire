@@ -13,6 +13,11 @@
 /// @see merge-deep-right
 /// @see merge-with
 /// @see merge-with-key
+///
+/// @example scss - merge-right
+///
+///   $merge-objs: merge-right((x: 0), (x: 5, y: 2));
+///   @debug $merge-objs; //=> (x: 5, y: 2);
 
 @function merge-right($l, $r) {
     @return merge($l, $r);

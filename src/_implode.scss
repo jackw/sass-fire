@@ -6,6 +6,11 @@
 /// @param {Number|String} separator The string used to separate the elements.
 /// @param {Array} xs The elements to join into a string.
 /// @return {String} str The string made by concatenating `xs` with `separator`.
+///
+/// @example scss - implode
+///
+///   $imploded: implode('|', (1 2 3 4 5 6 7 8 9));
+///   @debug $imploded; //=> '1|2|3|4|5|6|7|8|9'
 
 @function implode($separator: '', $xs: ()) {
     $result: '';

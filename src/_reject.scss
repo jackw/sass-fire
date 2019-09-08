@@ -8,6 +8,14 @@
 /// @param {Array} filterable
 /// @return {Array}
 /// @see filter
+///
+/// @example scss - reject
+///
+///   @function isEven($n) {
+///     @return $n % 2 == 0;
+///   }
+///   $only-odd-plz: reject(isEven, (1, 2, 3, 4));
+///   @debug $only-odd-plz; //=> (1 3)
 
 @function reject($pred, $filterable) {
     @return last(partition($pred, $filterable));

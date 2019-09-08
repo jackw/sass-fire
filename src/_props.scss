@@ -1,18 +1,22 @@
 @import 'inc';
 
-/// Acts as multiple `prop`: array of keys in, array of values out. Preserves
-/// order.
+/// Acts as multiple `prop`: array of keys in, array of values out.
 ///
 /// @group object
 /// @param {Array} names The property names to fetch
 /// @param {Object} obj The object to query
-/// @return {Array} The corresponding values or partially applied function.
+/// @return {Array} The corresponding values
+///
+/// @example scss - props
+///
+///   $list-of-values-plz: props(a d, ( a: 1, b: 2, c: 3, d: 4 ));
+///   @debug $list-of-values-plz; //=> (1, 4)
 
 @function props($names, $obj) {
     $length: length($names);
     $result: ();
     $idx: 1;
-
+    // TODO: use pick and map-values instead of while.
     @while ($idx <= $length) {
         $key: nth($names, $idx);
         @if (map-has-key($obj, $key)) {

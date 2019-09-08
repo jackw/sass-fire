@@ -11,6 +11,14 @@
 /// @see merge-deep-right
 /// @see merge-with
 /// @see merge-with-key
+///
+/// @example scss - merge
+///
+///   $merge-objs: merge(concat,
+///     ( 'name': 'fred', 'age': 10 )
+///     ( 'age': 40 )
+///   );
+///   @debug $merge-objs; //=> ( 'name': 'fred', 'age': 40 )
 
 @function merge($l, $r) {
     @return map-merge($l, $r);

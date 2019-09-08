@@ -6,6 +6,11 @@
 /// @param {Number} n
 /// @return {Number} n - 1
 /// @see inc
+///
+/// @example scss - dec
+///
+///   $nineteen: dec(20);
+///   @debug $nineteen; //=> 19
 
 @function dec($n) {
     @return subtract($n, 1);

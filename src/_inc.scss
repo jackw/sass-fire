@@ -6,6 +6,11 @@
 /// @param {Number} n
 /// @return {Number} n + 1
 /// @see dec
+///
+/// @example scss - inc
+///
+///   $twenty: inc(19);
+///   @debug $twenty; //=> 20
 
 @function inc($n) {
     @return add($n, 1);

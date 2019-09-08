@@ -14,6 +14,14 @@
 /// @see merge-deep-right
 /// @see merge-deep-with
 /// @see merge-deep-with-key
+///
+/// @example scss - merge-deep-left
+///
+///   $merge-objs: merge-deep-left(
+///     ( name: 'fred', age: 10, contact: ( email: 'moo@example.com' )),
+///     ( age: 40, contact: ( email: 'baa@example.com' ))
+///   );
+///   @debug $merge-objs; //=> ( name: 'fred', age: 10, contact: ( email: 'moo@example.com' ))
 
 @function merge-deep-left($l-obj, $r-obj) {
     @return merge-deep-with-key(

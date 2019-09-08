@@ -6,6 +6,16 @@
 /// @param {Number} toIndex The end index.
 /// @param {*} list
 /// @return {*}
+///
+/// @example scss - slice-array
+///
+///   $sliced: slice(5, 9, (1 2 3 4 5 6 7 8 9));
+///   @debug $sliced; //=> (5 6 7 8 9)
+///
+/// @example scss - slice-string
+///
+///   $sliced: slice(1, 4, 'hello world');
+///   @debug $sliced; //=> 'hell'
 
 @function slice($from-index, $to-index, $list) {
     @if type-of($list) == 'string' {

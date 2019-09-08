@@ -6,6 +6,11 @@
 /// @group math
 /// @param {List} list
 /// @return {Number}
+///
+/// @example scss - median
+///
+///   $median-average: median(12, 5, 17, 1, 7);
+///   @debug $median-average; //=> 7
 
 @function median($list...) {
     $length: length($list);

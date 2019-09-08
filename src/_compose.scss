@@ -3,12 +3,21 @@
 @import 'head';
 @import 'tail';
 
-/// Performs right-to-left function composition.
+/// Performs right-to-left function composition. The right most parameter is the input
 ///
 /// @group function
-/// @param {Function...} functions... The functions to compose
-/// @return {Function}
+/// @param {Function...} params... The functions and input to compose
+/// @return {*}
 /// @see pipe
+///
+/// @example scss - compose
+///
+///   $input: ('a', 'b', 'c');
+///   $output: compose(
+///     (implode, '-'),
+///     (join, ('d', 'e')),
+///     $input);
+///   @debug $output; //=> 'd-e-a-b-c'
 
 @function compose($params...) {
     $function-list: init($params);

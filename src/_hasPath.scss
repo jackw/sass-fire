@@ -6,6 +6,14 @@
 /// @param {Array} path The path to use.
 /// @param {Object} obj The object to check the path in.
 /// @return {Boolean} Whether the path exists.
+///
+/// @example scss - hasPath
+///
+///   $nested-obj: (a: (b: 2));
+///   $has-path: hasPath(('a', 'b'), $nested-obj);
+///   $no-has-path: hasPath(('a', 'c'), $nested-obj);
+///   @debug $has-path; //=> true
+///   @debug $no-has-path; //=> false
 
 @function hasPath($path, $obj) {
     @if length($path) == 0 {

@@ -17,6 +17,14 @@ $_sass-fire-merge-with-key-fn: '' !global;
 /// @see merge-deep-with-key
 /// @see merge
 /// @see merge-with-key
+///
+/// @example scss - merge-with
+///
+///   $merge-objs: merge-with(concat,
+///     ( a: true, values: [10, 20] )
+///     ( b: true, values: [15, 35] )
+///   );
+///   @debug $merge-objs; //=> ( a: true, b: true, values: [10, 20, 15, 35] )
 
 @function merge-with($fn, $l, $r) {
     $_sass-fire-merge-with-key-fn: $fn !global;

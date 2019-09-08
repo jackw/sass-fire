@@ -10,6 +10,14 @@
 /// @param {Array} filterable
 /// @return {Array} Filterable
 /// @see reject
+///
+/// @example scss - filter
+///
+///   @function isEven($n) {
+///     @return $n % 2 == 0;
+///   }
+///   $only-even-plz: filter(isEven, (1, 2, 3, 4));
+///   @debug $only-even-plz; //=> (2 4)
 
 @function filter($predicate, $list) {
     @return head(partition($predicate, $list));
