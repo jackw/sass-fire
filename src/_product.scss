@@ -6,6 +6,11 @@
 /// @group math
 /// @param {Array} list An array of numbers
 /// @return {Number} The product of all the numbers in the list.
+///
+/// @example scss - product
+///
+///   $multipy-list: product(2, 4, 6, 8, 100, 2);
+///   @debug $multipy-list; //=> 76800
 
 @function product($list...) {
     @return reduce(multiply, 1, $list);

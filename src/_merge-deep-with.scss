@@ -20,6 +20,14 @@ $_sass-fire-merge-deep-with-fn: '' !global;
 ///
 /// @see merge-deep-with-key
 /// @see merge-with
+///
+/// @example scss - merge-deep-with
+///
+///   $merge-objs: merge-deep-with(concat,
+///     ( a: true, c: ( thing: 'foo', values: [10, 20] ))
+///     ( b: true, c: ( thing: 'bar', values: [15, 35] ))
+///   );
+///   @debug $merge-objs; //=> ( a: true, b: true, c: ( thing: 'bar', values: [10, 20, 15, 35] ))
 
 @function merge-deep-with($fn, $l-obj, $r-obj) {
     $_sass-fire-merge-deep-with-fn: $fn !global;

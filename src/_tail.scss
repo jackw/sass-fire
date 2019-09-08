@@ -8,6 +8,16 @@
 /// @see head
 /// @see init
 /// @see last
+///
+/// @example scss - tail-array
+///
+///   $without-first: tail((1 2 3 4 5 6 7 8 9));
+///   @debug $without-first; //=> (2 3 4 5 6 7 8 9)
+///
+/// @example scss - tail-string
+///
+///   $without-first: tail('hello world');
+///   @debug $without-first; //=> 'ello world'
 
 @function tail($list) {
     $length: if(type-of($list) == 'string', str-length($list), length($list));

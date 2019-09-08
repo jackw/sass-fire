@@ -6,6 +6,14 @@
 /// @param {String} prop The name of the property to check for.
 /// @param {Object} obj The object to query.
 /// @return {Boolean} Whether the property exists.
+///
+/// @example scss - has
+///
+///   $alice: (name: 'alice');
+///   $has-name: has('name', $alice);
+///   $has-flower: has('flower', $alice);
+///   @debug $has-name; //=> true
+///   @debug $has-flower; //=> false
 
 @function has($prop, $obj) {
     $_prop: quote($prop);

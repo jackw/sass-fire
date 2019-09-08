@@ -5,6 +5,16 @@
 /// @param {Array|String} b The second list
 /// @return {Array|String} A list consisting of the elements of `firstList`
 /// followed by the elements of `secondList`.
+///
+/// @example scss - concat-arrays
+///
+///   $concat-arrays: concat([1, 2, 3], [4, 5, 6]);
+///   @debug $concat-arrays //=> [1, 2, 3, 4, 5, 6]
+///
+/// @example scss - concat-strings
+///
+///   $concat-strings: concat('ABC', 'DEF');
+///   @debug $concat-strings; //=> 'ABCDEF'
 
 @function concat($a, $b) {
     @if type-of($a) == 'list' and type-of($b) == 'list' {

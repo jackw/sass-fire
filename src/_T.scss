@@ -3,6 +3,11 @@
 ///
 /// @group function
 /// @return {bool} true
+///
+/// @example scss - F
+///
+///   $so-true: T();
+///   @debug $so-true; //=> true
 
 @function T($args...) {
     @return true;

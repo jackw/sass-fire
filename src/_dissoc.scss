@@ -8,6 +8,12 @@
 /// @return {Object} A new object equivalent to the original but without the specified property
 /// @see assoc
 /// @see pick
+///
+/// @example scss - dissoc
+///
+///   $obj: (a: 1, b: 2, c: 3);
+///   $remove-prop: dissoc('b' $obj);
+///   @debug $remove-prop; //=> (a: 1, c: 3)
 
 @function dissoc($prop, $obj) {
     @return omit(($prop), $obj);

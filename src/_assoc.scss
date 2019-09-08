@@ -11,16 +11,12 @@
 ///
 /// @example scss - assoc
 ///
-/// $obj: (
-///     a: 1,
-///     b: 2
-/// );
-/// $set-prop: assoc('c', 3, $obj),
-/// // $set-prop -> (
-/// //     a: 1,
-/// //     b: 2,
-/// //     c: 3
-/// // );
+///   $obj: (
+///       a: 1,
+///       b: 2
+///   );
+///   $set-prop: assoc('c', 3, $obj);
+///   @debug $set-prop; //=> ( a: 1, b: 2, c: 3)
 
 @function assoc($prop, $val, $obj) {
     @return map-merge($obj, (#{$prop}: $val));

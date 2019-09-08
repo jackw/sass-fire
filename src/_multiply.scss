@@ -4,6 +4,11 @@
 /// @param {Number} a
 /// @param {Number} b
 /// @return {Number}
+///
+/// @example scss - multiply
+///
+///   $multiply-numbers: multiply(10, 2);
+///   @debug $multiply-numbers; //=> 20
 
 @function multiply($a, $b) {
     @return $a * $b;

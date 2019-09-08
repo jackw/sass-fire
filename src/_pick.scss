@@ -9,6 +9,11 @@
 /// @return {Object} A new object with only properties from `names` on it.
 /// @see omit
 /// @see props
+///
+/// @example scss - pick
+///
+///   $picky: pick(a d, ( a: 1, b: 2, c: 3, d: 4 ));
+///   @debug $picky; //=> (a: 1, d: 4)
 
 @function pick($names, $obj) {
     $result: ();

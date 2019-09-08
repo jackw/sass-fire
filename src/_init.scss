@@ -8,6 +8,16 @@
 /// @see last
 /// @see head
 /// @see tail
+///
+/// @example scss - init-array
+///
+///   $first: init((1 2 3 4 5 6 7 8 9));
+///   @debug $first; //=> (1 2 3 4 5 6 7 8)
+///
+/// @example scss - init-string
+///
+///   $first: init('hello world');
+///   @debug $first; //=> 'hello worl'
 
 @function init($list) {
     $length: if(type-of($list) == 'string', str-length($list), length($list));

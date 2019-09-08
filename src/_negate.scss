@@ -3,6 +3,11 @@
 /// @group math
 /// @param {Number} n
 /// @return {Number}
+///
+/// @example scss - negate
+///
+///   $negate-numbers: negate(40);
+///   @debug $negate-numbers; //=> -40
 
 @function negate($n) {
     @return -$n;

@@ -7,8 +7,8 @@
 ///
 /// @example scss - add
 ///
-/// $add-numbers: add(10, 20);
-/// // $add-numbers -> 30;
+///   $add-numbers: add(10, 20);
+///   @debug $add-numbers; //=> 30
 
 @function add($a, $b) {
     @return $a + $b;
