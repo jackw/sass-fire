@@ -49,7 +49,6 @@
     }
   },
   "release": {
-    "branch": "master",
-    "dryRun": true
+    "branch": "master"
   }
 }
