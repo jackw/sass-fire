@@ -17,3 +17,16 @@ steps:
     image: node
     commands:
     - yarn test
+
+  - name: semantic-release
+    image: gtramontina/semantic-release:15.13.3
+    environment:
+      GH_TOKEN:
+        from_secret: GH_TOKEN
+      NPM_TOKEN:
+        from_secret: NPM_TOKEN
+    entrypoint:
+      - semantic-release
+    when:
+      branch: master
+      event: push
