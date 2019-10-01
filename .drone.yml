@@ -30,3 +30,16 @@ steps:
     when:
       branch: master
       event: push
+
+  - name: trigger
+    image: plugins/downstream
+    settings:
+      server: http://drone
+      token:
+        from_secret: downstream_token
+      fork: true
+      repositories:
+        - jackw/sass-fire.io
+    when:
+      branch: master
+      event: push
