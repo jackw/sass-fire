@@ -34,7 +34,7 @@
     "sassdoc": "2.7.0",
     "stylelint": "10.1.0",
     "stylelint-config-prettier": "5.2.0",
-    "stylelint-config-sass-guidelines": "6.0.0",
+    "stylelint-config-sass-guidelines": "6.2.0",
     "stylelint-prettier": "1.1.1",
     "stylelint-scss": "3.10.1",
     "watch": "1.0.2",
