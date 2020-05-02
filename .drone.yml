@@ -6,7 +6,7 @@ steps:
   - name: install dependencies
     image: node
     commands:
-    - yarn
+    - yarn --frozen-lockfile
 
   - name: lint
     image: node
@@ -19,7 +19,7 @@ steps:
     - yarn test
 
   - name: semantic-release
-    image: gtramontina/semantic-release:15.13.3
+    image: gtramontina/semantic-release:17.0.7
     environment:
       GH_TOKEN:
         from_secret: GH_TOKEN
