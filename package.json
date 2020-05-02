@@ -27,7 +27,7 @@
   "devDependencies": {
     "cz-conventional-changelog": "3.0.2",
     "glob": "7.1.6",
-    "jest": "24.9.0",
+    "jest": "25.5.4",
     "node-sass": "4.13.1",
     "prettier": "1.18.2",
     "sass-true": "5.0.0",
