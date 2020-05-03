@@ -25,20 +25,21 @@
     "semantic-release": "semantic-release"
   },
   "devDependencies": {
-    "cz-conventional-changelog": "3.0.2",
+    "@semantic-release/git": "^9.0.0",
+    "cz-conventional-changelog": "3.1.0",
     "glob": "7.1.6",
-    "jest": "24.9.0",
-    "node-sass": "4.13.1",
-    "prettier": "1.18.2",
+    "jest": "25.5.4",
+    "node-sass": "4.14.0",
+    "prettier": "2.0.5",
     "sass-true": "5.0.0",
-    "sassdoc": "2.7.0",
-    "stylelint": "10.1.0",
-    "stylelint-config-prettier": "5.2.0",
-    "stylelint-config-sass-guidelines": "6.0.0",
-    "stylelint-prettier": "1.1.1",
-    "stylelint-scss": "3.10.1",
-    "watch": "1.0.2",
-    "semantic-release": "15.13.24"
+    "sassdoc": "2.7.1",
+    "semantic-release": "17.0.7",
+    "stylelint": "13.3.3",
+    "stylelint-config-prettier": "8.0.1",
+    "stylelint-config-sass-guidelines": "7.0.0",
+    "stylelint-prettier": "1.1.2",
+    "stylelint-scss": "3.17.1",
+    "watch": "1.0.2"
   },
   "jest": {
     "testEnvironment": "node"
@@ -49,6 +50,17 @@
     }
   },
   "release": {
-    "branch": "master"
+    "branch": "master",
+    "plugins": [
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ]
+    ]
   }
 }

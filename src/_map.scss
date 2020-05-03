@@ -28,7 +28,7 @@
             $accumulator: map-merge(
                 $accumulator,
                 (
-                    $key: call(get-function($function), $value)
+                    $key: call(get-function($function), $value),
                 )
             );
         }
