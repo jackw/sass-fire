@@ -50,9 +50,8 @@ steps:
       server: http://drone
       token:
         from_secret: downstream_token
-      fork: true
       repositories:
-        - jackw/sass-fire.io
+        - jackw/sass-fire.io@master
     when:
       branch: master
       event: push
