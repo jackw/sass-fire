@@ -2,6 +2,10 @@
 @import '../src/pipe';
 @import '../src/implode';
 
+@function _sass-fire-pipe-double($n) {
+    @return $n * 2;
+}
+
 @include describe('pipe [function]') {
     @include it('should run a series of functions against a list') {
         $input: ('a', 'b', 'c');
@@ -9,5 +13,6 @@
             pipe((join, ('d', 'e')), (implode, '-'), $input),
             'd-e-a-b-c'
         );
+        @include assert-equal(pipe(_sass-fire-pipe-double, abs, -12), 24);
     }
 }
