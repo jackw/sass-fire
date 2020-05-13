@@ -39,7 +39,6 @@
     @if function-exists($fn) {
         @return call(get-function($fn), $input...);
     } @else {
-        @debug #{Missing Function: $fn};
         @return $input;
     }
 }
