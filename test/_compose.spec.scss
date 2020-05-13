@@ -2,6 +2,10 @@
 @import '../src/compose';
 @import '../src/implode';
 
+@function _sass-fire-compose-double($n) {
+    @return $n * 2;
+}
+
 @include describe('compose [function]') {
     @include it('should run a series of functions against a list') {
         $input: ('a', 'b', 'c');
@@ -9,5 +13,6 @@
             compose((implode, '-'), (join, ('d', 'e')), $input),
             'd-e-a-b-c'
         );
+        @include assert-equal(compose(abs, _sass-fire-compose-double, -12), 24);
     }
 }
