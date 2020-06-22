@@ -32,9 +32,13 @@
 }
 
 @function _run-function-with-params($function, $input) {
-    $fn: head($function);
+    $fn: if(type-of($function) == 'list', head($function), $function);
     @if type-of($function) == 'list' or type-of($function) == 'arglist' {
         $input: append(tail($function), $input);
     }
-    @return call(get-function($fn), $input...);
+    @if function-exists($fn) {
+        @return call(get-function($fn), $input...);
+    } @else {
+        @return $input;
+    }
 }
