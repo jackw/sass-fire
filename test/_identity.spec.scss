@@ -1,0 +1,10 @@
+@import 'true';
+@import '../src/identity';
+
+@include describe('identity [function]') {
+    @include it('returns its first argument') {
+        @include assert-equal(identity(null), null);
+        @include assert-equal(identity('foo'), 'foo');
+        @include assert-equal(identity('foo', 'bar'), 'foo');
+    }
+}

@@ -1,0 +1,16 @@
+@import 'head';
+
+/// A function that does nothing but return the parameter supplied to it. Good
+/// as a default or placeholder function.
+///
+/// @group function
+/// @return {bool} true
+///
+/// @example scss - indentity
+///
+///   $is-one: identity(1);
+///   @debug $is-one; //=> 1
+
+@function identity($args...) {
+  @return head($args);
+}
