@@ -12,5 +12,5 @@
 ///   @debug $is-one; //=> 1
 
 @function identity($args...) {
-  @return head($args);
+    @return head($args);
 }
