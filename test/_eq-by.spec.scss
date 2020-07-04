@@ -1,0 +1,12 @@
+@import 'true';
+@import '../src/eq-by';
+
+@include describe('eq-by [function]') {
+    @include it('should eq-by two numbers together') {
+        @include assert-equal(eq-by(abs, 5, 5), true);
+        @include assert-equal(eq-by(abs, 5, -5), true);
+        @include assert-equal(eq-by(abs, -5, 5), true);
+        @include assert-equal(eq-by(abs, -5, -5), true);
+        @include assert-equal(eq-by(abs, 42, 99), false);
+    }
+}
