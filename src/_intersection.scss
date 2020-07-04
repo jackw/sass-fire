@@ -13,9 +13,11 @@ $_sass-fire-intersection-array: () !global;
 /// @param {Array} list2 The second list.
 /// @return {Array} The list of elements found in both `list1` and `list2`.
 /// @see inner-join
-/// @example
 ///
-///      intersection([1,2,3,4], [7,6,5,4,3]); //=> [4, 3]
+/// @example scss - intersection
+///
+///      $four-n-three: intersection([1,2,3,4], [7,6,5,4,3]);
+///      @debug $four-n-three; //=> [4, 3]
 ///
 @function intersection($list1: (), $list2: ()) {
     $lookup: if(length($list1) > length($list2), $list1, $list2);

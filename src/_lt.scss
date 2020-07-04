@@ -10,9 +10,9 @@
 ///
 /// @example scss - lt
 ///
-///   lte(2, 1); //=> false
-///   lte(2, 2); //=> false
-///   lte(2, 3); //=> true
+///   lt(2, 1); //=> false
+///   lt(2, 2); //=> false
+///   lt(2, 3); //=> true
 ///
 
 @function lt($a, $b) {

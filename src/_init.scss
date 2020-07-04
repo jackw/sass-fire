@@ -9,12 +9,10 @@
 /// @see head
 /// @see tail
 ///
-/// @example scss - init-array
+/// @example scss - init
 ///
 ///   $first: init((1 2 3 4 5 6 7 8 9));
 ///   @debug $first; //=> (1 2 3 4 5 6 7 8)
-///
-/// @example scss - init-string
 ///
 ///   $first: init('hello world');
 ///   @debug $first; //=> 'hello worl'

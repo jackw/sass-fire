@@ -10,8 +10,6 @@
 ///   $merge-objs: merge-all((foo: 1), (bar: 2), (baz: 3));
 ///   @debug $merge-objs; //=> (foo: 1, bar: 2, baz: 3)
 ///
-/// @example scss - merge-all
-///
 ///   $override-props: merge-all((foo: 1), (foo: 2), (bar: 2));
 ///   @debug $override-props; //=> (foo: 2, bar: 2)
 
