@@ -1,0 +1,28 @@
+@import 'true';
+@import '../src/uniq';
+@import '../src/add';
+@import '../src/identity';
+
+@include describe('uniq [function]') {
+    @include it(
+        'returns a set from any array (i.e. purges duplicate elements)'
+    ) {
+        $list: [1, 2, 3, 1, 2, 3, 1, 2, 3];
+        @include assert-equal(uniq($list), (1 2 3));
+    }
+
+    @include it('keeps elements from the left') {
+        @include assert-equal(uniq([1, 2, 3, 4, 1]), (1 2 3 4));
+    }
+
+    @include it('returns an empty array for an empty array') {
+        @include assert-equal(uniq([]), ());
+    }
+
+    @include it('uses reference equality for functions') {
+        @include assert-equal(
+            length(uniq([add, identity, add, identity, add, identity])),
+            2
+        );
+    }
+}

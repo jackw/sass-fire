@@ -1,0 +1,37 @@
+@import 'reduce';
+
+///
+/// Returns a new list containing only one copy of each element in the original
+/// list. [`equals`](#equals) is used to determine equality.
+///
+/// @group list
+/// @param {Array} list The array to consider.
+/// @return {Array} The list of unique items.
+/// @example
+///
+///   uniq([1, 1, 2, 1]); //=> [1, 2]
+///   uniq([1, '1']);     //=> [1, '1']
+///   uniq([[42], [42]]); //=> [[42]]
+///
+
+@function uniq($list...) {
+    $result: ();
+
+    @if type-of($list) == arglist and length(nth($list, 1)) == 0 {
+        @return $result;
+    }
+
+    $_list: if(
+        type-of($list) == arglist and length($list) == 1,
+        reduce(append, (), nth($list, 1)),
+        $list
+    );
+    @each $item in $_list {
+        // should probably test with `get-function` for functions.
+        @if not index($result, $item) {
+            $result: append($result, $item);
+        }
+    }
+
+    @return $result;
+}
