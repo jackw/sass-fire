@@ -1,0 +1,30 @@
+@import 'filter';
+@import 'uniq';
+@import 'compose';
+
+$_sass-fire-intersection-array: () !global;
+
+///
+/// Combines two lists into a set (i.e. no duplicates) composed of those
+/// elements common to both lists.
+///
+/// @group relation
+/// @param {Array} list1 The first list.
+/// @param {Array} list2 The second list.
+/// @return {Array} The list of elements found in both `list1` and `list2`.
+/// @see inner-join
+/// @example
+///
+///      intersection([1,2,3,4], [7,6,5,4,3]); //=> [4, 3]
+///
+@function intersection($list1: (), $list2: ()) {
+    $lookup: if(length($list1) > length($list2), $list1, $list2);
+    $filtered: if(length($list1) > length($list2), $list2, $list1);
+    $_sass-fire-intersection-array: $filtered !global;
+    $result: compose(uniq, (filter, _sass-fire-intersection-filter), $lookup);
+    @return $result;
+}
+
+@function _sass-fire-intersection-filter($item) {
+    @return index($_sass-fire-intersection-array, $item);
+}
