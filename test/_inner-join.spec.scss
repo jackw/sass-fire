@@ -1,0 +1,40 @@
+@import 'true';
+@import '../src/inner-join';
+
+@function f($r, $id) {
+    @return map-get($r, id) == $id;
+}
+
+@include describe('inner-join [function]') {
+    $a: (
+        id: 1,
+        name: 'a',
+    );
+    $b: (
+        id: 2,
+        name: 'b',
+    );
+    $c: (
+        id: 3,
+        name: 'c',
+    );
+
+    @include it('only returns elements from the first list') {
+        @include assert-equal(inner-join(f, [$a, $b, $c], []), ());
+        @include assert-equal(inner-join(f, [$a, $b, $c], [1]), append((),$a));
+        @include assert-equal(inner-join(f, [$a, $b, $c], [1, 2]), ($a $b));
+        @include assert-equal(
+            inner-join(f, [$a, $b, $c], [1, 2, 3]),
+            ($a $b $c)
+        );
+        @include assert-equal(
+            inner-join(f, [$a, $b, $c], [1, 2, 3, 4]),
+            ($a $b $c)
+        );
+    }
+
+    @include it('does not remove duplicates') {
+        @include assert-equal(inner-join(f, [$a, $a, $a], [1, 2, 3]), ($a $a $a));
+        @include assert-equal(inner-join(f, [$a, $b, $c], [1, 1, 1]), append((),$a));
+    }
+}
