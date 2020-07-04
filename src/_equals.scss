@@ -1,0 +1,19 @@
+///
+/// Returns `true` if its arguments are equivalent, `false` otherwise. Handles
+/// cyclical data structures.
+///
+/// @group relation
+/// @param {*} a
+/// @param {*} b
+/// @return {Boolean}
+///
+/// @example scss - equals
+///
+///   equals(1, 1); //=> true
+///   equals(1, '1'); //=> false
+///   equals([1, 2, 3], [1, 2, 3]); //=> true
+///
+
+@function equals($a, $b) {
+    @return $a == $b;
+}

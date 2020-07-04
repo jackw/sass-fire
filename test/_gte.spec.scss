@@ -1,0 +1,12 @@
+@import 'true';
+@import '../src/gte';
+
+@include describe('gte [function]') {
+    @include it(
+        'reports whether one number is greater than or equal to another'
+    ) {
+        @include assert-equal(gte(3, 5), false);
+        @include assert-equal(gte(6, 4), true);
+        @include assert-equal(gte(7, 7), true);
+    }
+}

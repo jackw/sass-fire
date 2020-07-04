@@ -1,0 +1,23 @@
+@import 'equals';
+
+///
+/// Takes a function and two values in its domain and returns `true` if the
+/// values map to the same value in the codomain; `false` otherwise.
+///
+/// @group relation
+/// @param {Function} fn
+/// @param {*} x
+/// @param {*} y
+/// @return {Boolean}
+///
+/// @example scss - eq-by
+///
+///   $is-eq: eq-by(abs, 5, -5);
+///   @debug $is-eq; //=> true
+///
+
+@function eq-by($fn, $x, $y) {
+    $a: call(get-function($fn), $x);
+    $b: call(get-function($fn), $y);
+    @return equals($a, $b);
+}

@@ -1,0 +1,10 @@
+@import 'true';
+@import '../src/lt';
+
+@include describe('lt [function]') {
+    @include it('reports whether one number is less than another') {
+        @include assert-equal(lt(3, 5), true);
+        @include assert-equal(lt(6, 4), false);
+        @include assert-equal(lt(7, 7), false);
+    }
+}

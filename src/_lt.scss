@@ -1,0 +1,20 @@
+///
+/// Returns `true` if the first argument is less than the second;
+/// `false` otherwise.
+///
+/// @group relation
+/// @param {Number} a
+/// @param {Number} b
+/// @return {Boolean}
+/// @see gt
+///
+/// @example scss - lt
+///
+///   lt(2, 1); //=> false
+///   lt(2, 2); //=> false
+///   lt(2, 3); //=> true
+///
+
+@function lt($a, $b) {
+    @return $a < $b;
+}

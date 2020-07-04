@@ -13,14 +13,14 @@
 ///
 ///   @function is-even($n) { @return $n % 2 == 0; }
 ///
-///   $only-even-plz: partition((1, 2, 3, 4));
-///   @debug $only-even-plz; //=> (2 4, 1 3)
+///   $even-n-odd: partition(is-even, (1, 2, 3, 4));
+///   @debug $even-n-odd; //=> ((2 4), (1 3))
 
 @function partition($pred, $filterable) {
     $satisfy: ();
     $dissatisfy: ();
     @each $item in $filterable {
-        $truthy: if(call(get-function($pred), $item), true, false);
+        $truthy: call(get-function($pred), $item);
         @if $truthy {
             $satisfy: append($satisfy, $item);
         } @else {

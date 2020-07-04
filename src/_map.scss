@@ -7,13 +7,11 @@
 /// @param {Array | Object} list The list to be iterated over.
 /// @return {Array | Object} The new list.
 ///
-/// @example scss - map-array
+/// @example scss - map
 ///
 ///   @function double($number) { @return $number * 2; }
 ///   $double-list: map(double, [1 2 3 4 5 6 7 8 9]);
 ///   @debug $double-list; //=> [2 4 6 8 10 12 14 16 18]
-///
-/// @example scss - map-object
 ///
 ///   @function double($number) { @return $number * 2; }
 ///   $double-obj: map(double, (x: 1, y: 2, z: 3));

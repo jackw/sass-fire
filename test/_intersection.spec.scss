@@ -1,0 +1,19 @@
+@import 'true';
+@import '../src/intersection';
+
+@include describe('intersection') {
+    $m: [1, 2, 3, 4];
+    $m2: [1, 2, 3, 4, 1, 2, 3, 4];
+    $n: [3, 4, 5, 6];
+    $n2: [3, 3, 4, 4, 5, 5, 6, 6];
+
+    @include it('combines two lists into the set of common elements') {
+        @include assert-equal(intersection($m, $n), (3 4));
+    }
+
+    @include it(
+        'does not allow duplicates in the output even if the input lists had duplicates'
+    ) {
+        @include assert-equal(intersection($m2, $n2), (3 4));
+    }
+}

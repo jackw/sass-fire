@@ -1,0 +1,10 @@
+@import 'true';
+@import '../src/gt';
+
+@include describe('gt [function]') {
+    @include it('reports whether one number is greater than another') {
+        @include assert-equal(gt(3, 5), false);
+        @include assert-equal(gt(6, 4), true);
+        @include assert-equal(gt(7, 7), false);
+    }
+}
