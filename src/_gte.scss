@@ -1,0 +1,20 @@
+///
+/// Returns `true` if the first argument is greater than or equal to the second;
+/// `false` otherwise.
+///
+/// @group relation
+/// @param {Number} a
+/// @param {Number} b
+/// @return {Boolean}
+/// @see lte
+///
+/// @example scss - gte
+///
+///   gte(2, 1); //=> true
+///   gte(2, 2); //=> true
+///   gte(2, 3); //=> false
+///
+
+@function gte($a, $b) {
+    @return $a >= $b;
+}

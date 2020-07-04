@@ -1,0 +1,12 @@
+@import 'true';
+@import '../src/lte';
+
+@include describe('lte [function]') {
+    @include it(
+        'reports whether one number is greater than or equal to another'
+    ) {
+        @include assert-equal(lte(3, 5), true);
+        @include assert-equal(lte(6, 4), false);
+        @include assert-equal(lte(7, 7), true);
+    }
+}
