@@ -1247,7 +1247,7 @@ at-least-node@^1.0.0:
   resolved "https://registry.yarnpkg.com/at-least-node/-/at-least-node-1.0.0.tgz#602cd4b46e844ad4effc92a8011a3c46e0238dc2"
   integrity sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==
 
-atob@^2.1.1:
+atob@^2.1.1, atob@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
 
@@ -1672,6 +1672,14 @@ chalk@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.0.0.tgz#6e98081ed2d17faab615eb52ac66ec1fe6209e72"
   integrity sha512-N9oWFcegS0sFr9oh1oz2d7Npos6vNoWW9HvtCg5N1KRFpUhaAhvTv5Y58g880fZaEYSNm3qDz8SU1UrGvp+n7A==
+  dependencies:
+    ansi-styles "^4.1.0"
+    supports-color "^7.1.0"
+
+chalk@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.0.tgz#4e14870a618d9e2edd97dd8345fd9d9dc315646a"
+  integrity sha512-qwx12AxXe2Q5xQ43Ac//I6v5aXTipYrSESdOgzrN+9XjgEpyjpKuvSGaN4qE93f7TQTlerQQ8S+EQ0EyDoVL1A==
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
@@ -2210,14 +2218,14 @@ crypto-random-string@^2.0.0:
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-2.0.0.tgz#ef2a7a966ec11083388369baa02ebead229b30d5"
   integrity sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==
 
-css@^2.2.1:
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/css/-/css-2.2.4.tgz#c646755c73971f2bba6a601e2cf2fd71b1298929"
+css@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/css/-/css-3.0.0.tgz#4447a4d58fdd03367c516ca9f64ae365cee4aa5d"
+  integrity sha512-DG9pFfwOrzc+hawpmqX/dHYHJG+Bsdb0klhyi1sDneOgGOXy9wQIC8hzyVp1e4NRYDBdxcylvywPkkXCHAzTyQ==
   dependencies:
-    inherits "^2.0.3"
+    inherits "^2.0.4"
     source-map "^0.6.1"
-    source-map-resolve "^0.5.2"
-    urix "^0.1.0"
+    source-map-resolve "^0.6.0"
 
 cssesc@^3.0.0:
   version "3.0.0"
@@ -5206,14 +5214,6 @@ lodash.escaperegexp@^4.1.2:
   resolved "https://registry.yarnpkg.com/lodash.escaperegexp/-/lodash.escaperegexp-4.1.2.tgz#64762c48618082518ac3df4ccf5d5886dae20347"
   integrity sha1-ZHYsSGGAglGKw99Mz11YhtriA0c=
 
-lodash.find@^4.6.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/lodash.find/-/lodash.find-4.6.0.tgz#cb0704d47ab71789ffa0de8b97dd926fb88b13b1"
-
-lodash.foreach@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/lodash.foreach/-/lodash.foreach-4.5.0.tgz#1a6a35eace401280c7f06dddec35165ab27e3e53"
-
 lodash.identity@~2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/lodash.identity/-/lodash.identity-2.4.1.tgz#6694cffa65fef931f7c31ce86c74597cf560f4f1"
@@ -5254,10 +5254,6 @@ lodash.keys@~2.4.1:
     lodash._isnative "~2.4.1"
     lodash._shimkeys "~2.4.1"
     lodash.isobject "~2.4.1"
-
-lodash.last@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/lodash.last/-/lodash.last-3.0.0.tgz#242f663112dd4c6e63728c60a3c909d1bdadbd4c"
 
 lodash.map@^4.5.1:
   version "4.6.0"
@@ -5308,6 +5304,11 @@ lodash@4.17.14:
 lodash@4.17.15, lodash@^4.0.0, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4, lodash@^4.2.1, lodash@~4.17.10:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+
+lodash@^4.17.19:
+  version "4.17.19"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
+  integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
 
 log-symbols@^2.2.0:
   version "2.2.0"
@@ -7666,16 +7667,14 @@ sass-graph@2.2.5:
     scss-tokenizer "^0.2.3"
     yargs "^13.3.2"
 
-sass-true@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/sass-true/-/sass-true-5.0.0.tgz#b93cecd7af9fdb8796323ce2cfc94387a48a4848"
-  integrity sha512-Q2HONu8QJcx8Lsdn8RqSHRGGB0aPlqCpXMDONtuXedaNIecz6QD3NCwkZiR4mprr5ZDiFcZwYT6fHDbyBXmDLQ==
+sass-true@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/sass-true/-/sass-true-6.0.0.tgz#df6869ea4b5749b68d6b5cef5c37f3cda2648cd0"
+  integrity sha512-EMKMHBXFEYJvZZjYoK7SQ2KwEZlHHJtPLhr3jViFNstUd/vMEFo0j71fPnyqRQlI1KZURTKSBr/Dx+ot4zGGqA==
   dependencies:
-    chalk "^2.4.2"
-    css "^2.2.1"
-    lodash.find "^4.6.0"
-    lodash.foreach "^4.5.0"
-    lodash.last "^3.0.0"
+    chalk "^4.1.0"
+    css "^3.0.0"
+    lodash "^4.17.19"
 
 sassdoc-extras@^2.5.0:
   version "2.5.1"
@@ -7981,7 +7980,7 @@ sorted-union-stream@~2.1.3:
     from2 "^1.3.0"
     stream-iterate "^1.1.0"
 
-source-map-resolve@^0.5.0, source-map-resolve@^0.5.2:
+source-map-resolve@^0.5.0:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/source-map-resolve/-/source-map-resolve-0.5.2.tgz#72e2cc34095543e43b2c62b2c4c10d4a9054f259"
   dependencies:
@@ -7990,6 +7989,14 @@ source-map-resolve@^0.5.0, source-map-resolve@^0.5.2:
     resolve-url "^0.2.1"
     source-map-url "^0.4.0"
     urix "^0.1.0"
+
+source-map-resolve@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/source-map-resolve/-/source-map-resolve-0.6.0.tgz#3d9df87e236b53f16d01e58150fc7711138e5ed2"
+  integrity sha512-KXBr9d/fO/bWo97NXsPIAW1bFSBOuCnjbNTBMO7N59hsv5i9yzRDfcYwwt0l04+VqnKC+EwzvJZIP/qkuMgR/w==
+  dependencies:
+    atob "^2.1.2"
+    decode-uri-component "^0.2.0"
 
 source-map-support@^0.5.6:
   version "0.5.12"
