@@ -1,0 +1,21 @@
+@import 'path';
+
+/// Returns `true` if the specified object property at given path satisfies the
+/// given predicate; `false` otherwise.
+///
+/// @group logic
+/// @param {Function} pred
+/// @param {List} path The path to use.
+/// @param {Object} map The map to retrieve the nested property from.
+/// @return {*} The data at `path` of the supplied object or null.
+///
+/// @example scss - path
+///
+///   @function is-positive($n) { @return $n > 0; }
+///   $value-is-pos: path-satisfies(is-positive, ('a', 'b'), (a: (b: 2)));
+///   @debug $value-is-pos; //=> true
+
+@function path-satisfies($pred, $path, $map) {
+    $value: path($path, $map);
+    @return if($value, call(get-function($pred), $value), false);
+}
