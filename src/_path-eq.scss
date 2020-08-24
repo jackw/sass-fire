@@ -4,7 +4,7 @@
 /// Determines whether a nested path on an object has a specific value.
 /// Most likely used to filter a list.
 ///
-/// @group object
+/// @group relation
 /// @param {List} path The path to use.
 /// @param {*} value The value to compare.
 /// @param {Object} map The map to retrieve the nested property from.
