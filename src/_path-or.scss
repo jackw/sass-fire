@@ -1,0 +1,20 @@
+@import 'path';
+
+/// If the given, non-null object has a value at the given path, returns the
+/// value at that path. Otherwise returns the provided default value.
+///
+/// @group object
+/// @param {*} d The default value.
+/// @param {List} path The path to use.
+/// @param {Object} map The map to retrieve the nested property from.
+/// @return {*} The data at `path` of the supplied object or the default value.
+///
+/// @example scss - path-or
+///
+///   $get-default: path-or('N/A', ('x', 'y'), (a: (b: 2)));
+///   @debug $get-value; //=> "N/A"
+
+@function path-or($d, $path, $map) {
+    $value: path($path, $map);
+    @return if($value, $value, $d);
+}

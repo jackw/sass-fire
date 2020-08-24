@@ -1,0 +1,20 @@
+@import 'path';
+@import 'equals';
+
+/// Determines whether a nested path on an object has a specific value.
+/// Most likely used to filter a list.
+///
+/// @group object
+/// @param {List} path The path to use.
+/// @param {*} value The value to compare.
+/// @param {Object} map The map to retrieve the nested property from.
+/// @return {*} The data at `path` of the supplied object or the default value.
+///
+/// @example scss - path-eq
+///
+///   $is-42: path-eq(('x', 'y'), 42, (x: (y: 42)));
+///   @debug $is-42; //=> true
+
+@function path-eq($path, $value, $map) {
+    @return equals(path($path, $map), $value);
+}

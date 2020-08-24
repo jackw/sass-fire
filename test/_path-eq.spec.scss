@@ -1,0 +1,46 @@
+@import 'true';
+@import '../src/path-eq';
+
+@include describe('path-eq [function]') {
+    $input: (
+        a: 1,
+        b: (
+            (
+                ba: 2,
+            ),
+            (
+                ba: 3,
+            ),
+        ),
+    );
+
+    @include it('returns true if the path matches the value') {
+        @include assert-equal(path-eq(('a'), 1, $input), true);
+        @include assert-equal(path-eq(('b', 2, 'ba'), 3, $input), true);
+    }
+
+    @include it('returns false for non matches') {
+        @include assert-equal(path-eq(('a'), '1', $input), false);
+        @include assert-equal(path-eq(('b', 1, 'ba'), 3, $input), false);
+    }
+
+    @include it('returns false for non existing values') {
+        @include assert-equal(path-eq(('c'), 'foo', $input), false);
+        @include assert-equal(path-eq(('c', 'd'), 'foo', $input), false);
+    }
+
+    @include it('accepts empty path') {
+        @include assert-equal(
+            path-eq(
+                (),
+                42,
+                (
+                    a: 1,
+                    b: 2,
+                )
+            ),
+            false
+        );
+        @include assert-equal(path-eq((), obj, obj), true);
+    }
+}
