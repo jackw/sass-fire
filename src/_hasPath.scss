@@ -33,3 +33,8 @@
 
     @return true;
 }
+
+/// @alias hasPath
+@function has-path($path, $obj) {
+    @return hasPath($path, $obj);
+}
