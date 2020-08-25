@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/jackw/sass-fire/compare/v1.2.0...v1.2.1) (2020-08-25)
+
+
+### Bug Fixes
+
+* **entry:** add missing functions ([9db6970](https://github.com/jackw/sass-fire/commit/9db6970))
+
 # [1.2.0](https://github.com/jackw/sass-fire/compare/v1.1.1...v1.2.0) (2020-08-25)
 
 
