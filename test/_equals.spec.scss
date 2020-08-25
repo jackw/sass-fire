@@ -3,28 +3,27 @@
 
 @include describe('equals [function]') {
     @include it('should handle numbers ') {
-        @include assert-equal(equals(1px, 1px), true);
-        @include assert-equal(equals(1px, 1em), false);
-        @include assert-equal(equals(1, 1px), true);
-        @include assert-equal(equals(96px, 1in), true);
+        @include assert-true(equals(1px, 1px));
+        @include assert-false(equals(1px, 1em));
+        @include assert-false(equals(1, 1px));
+        @include assert-true(equals(96px, 1in));
     }
     @include it('should handle strings') {
-        @include assert-equal(equals('Helvetica', Helvetica), true);
-        @include assert-equal(equals('Helvetica', 'Arial'), false);
+        @include assert-true(equals('Helvetica', Helvetica));
+        @include assert-false(equals('Helvetica', 'Arial'));
     }
     @include it('should handle colors') {
-        @include assert-equal(equals(#c30c30, #c30c30), true);
-        @include assert-equal(equals(hsl(34, 35%, 92.1%), #f2ece4), false);
-        @include assert-equal(
-            equals(rgba(179, 115, 153, 0.5), rgba(179, 115, 153, 0.8)),
-            false
+        @include assert-true(equals(#c30c30, #c30c30));
+        @include assert-true(equals(hsl(34, 35%, 92.1%), #f2ece4));
+        @include assert-false(
+            equals(rgba(179, 115, 153, 0.5), rgba(179, 115, 153, 0.8))
         );
     }
     @include it('should handle measurements') {
-        @include assert-equal(equals((5px 7px 10px), (5px 7px 10px)), true);
-        @include assert-equal(equals((5px 7px 10px), (10px 14px 20px)), false);
-        @include assert-equal(equals((5px 7px 10px), (5px, 7px, 10px)), false);
-        @include assert-equal(equals((5px 7px 10px), [5px 7px 10px]), false);
+        @include assert-true(equals((5px 7px 10px), (5px 7px 10px)));
+        @include assert-false(equals((5px 7px 10px), (10px 14px 20px)));
+        @include assert-false(equals((5px 7px 10px), (5px, 7px, 10px)));
+        @include assert-false(equals((5px 7px 10px), [5px 7px 10px]));
     }
     @include it('should handle maps') {
         $theme: (
@@ -32,40 +31,36 @@
             'nebula': #d2e1dd,
         );
 
-        @include assert-equal(
+        @include assert-true(
             equals(
                 $theme,
                 (
                     'venus': #998099,
                     'nebula': #d2e1dd,
                 )
-            ),
-            true
+            )
         );
-        @include assert-equal(
+        @include assert-false(
             equals(
                 $theme,
                 (
                     'venus': #998099,
                     'iron': #dadbdf,
                 )
-            ),
-            false
+            )
         );
     }
     @include it('should handle booleans') {
-        @include assert-equal(equals(true, true), true);
-        @include assert-equal(equals(true, false), false);
-        @include assert-equal(equals(null, false), false);
+        @include assert-true(equals(true, true));
+        @include assert-false(equals(true, false));
+        @include assert-false(equals(null, false));
     }
     @include it('should handle functions') {
-        @include assert-equal(
-            equals(get-function('rgba'), get-function('rgba')),
-            true
+        @include assert-true(
+            equals(get-function('rgba'), get-function('rgba'))
         );
-        @include assert-equal(
-            equals(get-function('rgba'), get-function('hsla')),
-            false
+        @include assert-false(
+            equals(get-function('rgba'), get-function('hsla'))
         );
     }
 }

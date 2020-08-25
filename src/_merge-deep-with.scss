@@ -1,7 +1,7 @@
 @import 'merge-deep-with-key';
 
 // as gross as this is there is no way that I know of to get around it. :(
-$_sass-fire-merge-deep-with-fn: '' !global;
+$_sass-fire-merge-deep-with-fn: '';
 
 /// Creates a new object with the own properties of the two provided objects.
 /// If a key exists in both objects:

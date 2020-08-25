@@ -15,7 +15,7 @@
 @function implode($separator: '', $xs: ()) {
     $result: '';
     @for $i from 1 through length($xs) {
-        $delimiter: if($i != 1, quote($separator), '');
+        $delimiter: if($i != 1, $separator + '', '');
         $item: #{$delimiter + nth($xs, $i)};
         $result: #{$result + $item};
     }
