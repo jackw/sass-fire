@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/jackw/sass-fire/compare/v1.2.1...v2.0.0) (2020-08-25)
+
+
+### Build System
+
+* move to dart-sass ([01524d8](https://github.com/jackw/sass-fire/commit/01524d8))
+
+
+### BREAKING CHANGES
+
+* dropping support for node-sass
+
 ## [1.2.1](https://github.com/jackw/sass-fire/compare/v1.2.0...v1.2.1) (2020-08-25)
 
 
