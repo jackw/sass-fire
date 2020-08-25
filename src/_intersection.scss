@@ -2,7 +2,7 @@
 @import 'uniq';
 @import 'compose';
 
-$_sass-fire-intersection-array: () !global;
+$_sass-fire-intersection-array: ();
 
 ///
 /// Combines two lists into a set (i.e. no duplicates) composed of those

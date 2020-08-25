@@ -2,8 +2,8 @@
 @import 'filter';
 
 // as gross as this is there is no way that I know of to get around it. :(
-$_sass-fire-inner-join-fn: '' !global;
-$_sass-fire-inner-join-list: '' !global;
+$_sass-fire-inner-join-fn: '';
+$_sass-fire-inner-join-list: '';
 
 /// Takes a predicate and two lists and returns a list comprising each of
 /// the elements of `a` which is equal to one or more
