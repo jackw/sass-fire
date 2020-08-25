@@ -1,0 +1,40 @@
+@import 'true';
+@import '../src/path-or';
+
+@include describe('path-or [function]') {
+    @include it(
+        'takes a path and an object and returns the value at the path or the default value'
+    ) {
+        $input: (
+            a: (
+                b: (
+                    c: 100,
+                    d: 200,
+                ),
+                e: (
+                    f: (
+                        100,
+                        101,
+                        102,
+                    ),
+                    g: 'G',
+                ),
+                h: 'H',
+            ),
+            i: 'I',
+            j: join((), 'J'),
+        );
+        @include assert-equal(path-or('Unknown', ('a', 'b', 'c'), $input), 100);
+        @include assert-equal(path-or('Unknown', (), $input), $input);
+        @include assert-equal(
+            path-or('Unknown', ('a', 'e', 'f', 2), $input),
+            101
+        );
+        @include assert-equal(path-or('Unknown', ('j', 1), $input), 'J');
+        @include assert-equal(path-or('Unknown', ('j', 2), $input), 'Unknown');
+        @include assert-equal(
+            path-or('Unknown', ('a', 'b', 'c'), null),
+            'Unknown'
+        );
+    }
+}

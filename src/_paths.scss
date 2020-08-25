@@ -1,0 +1,58 @@
+@import 'inc';
+@import 'init';
+@import 'last';
+@import 'map';
+
+$_sass-fire-paths-map: () !global;
+
+/// Retrieves the values at a given path of an object
+///
+/// @group object
+/// @param {List} paths-array The array of paths to be fetched.
+/// @param {Object} map The map to retrieve the nested properties from.
+/// @return {*} A list consisting of values at paths specified by "paths-array".
+///
+/// @example scss - paths
+///
+///   $get-values: paths(('a', 'b'), ('p', 0, 'q'), (a: (b: 2), p: ((q: 3))));
+///   @debug $get-values; //=> (2, 3)
+
+@function paths($args...) {
+    $map: last($args);
+    $paths: init($args);
+    $_sass-fire-paths-map: $map !global;
+
+    @return map(_sass-fire-path, $paths);
+}
+
+@function _sass-fire-path($path) {
+    $val: $_sass-fire-paths-map;
+    $idx: 1;
+    $p: null;
+
+    @while ($idx <= length($path)) {
+        @if $val == null {
+            @return null;
+        }
+        $p: nth($path, $idx);
+        @if type-of($val) == 'map' {
+            $val: if(map-has-key($val, $p), map-get($val, $p), null);
+        } @else if
+            type-of($val) ==
+            'list' and
+            type-of($p) ==
+            'number' and
+            $p !=
+            0 and
+            abs($p) <=
+            length($val)
+        {
+            $val: nth($val, $p);
+        } @else {
+            $val: null;
+        }
+        $idx: inc($idx);
+    }
+
+    @return $val;
+}

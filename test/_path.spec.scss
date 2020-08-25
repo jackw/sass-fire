@@ -1,0 +1,59 @@
+@import 'true';
+@import '../src/path';
+
+@include describe('path [function]') {
+    @include it('should return values in objects') {
+        @include assert-equal(
+            path(
+                ('a', 'b'),
+                (
+                    a: (
+                        b: 2,
+                    ),
+                )
+            ),
+            2
+        );
+        @include assert-equal(
+            path(
+                ('a', 'b'),
+                (
+                    c: (
+                        b: 2,
+                    ),
+                )
+            ),
+            null
+        );
+        @include assert-equal(
+            path(
+                ('a', 'b', 1),
+                (
+                    a: (
+                        b: (
+                            1,
+                            2,
+                            3,
+                        ),
+                    ),
+                )
+            ),
+            1
+        );
+        @include assert-equal(
+            path(
+                ('a', 'b', -2),
+                (
+                    a: (
+                        b: (
+                            1,
+                            2,
+                            3,
+                        ),
+                    ),
+                )
+            ),
+            2
+        );
+    }
+}

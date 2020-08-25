@@ -1,0 +1,18 @@
+@import 'head';
+@import 'paths';
+
+/// Retrieves the value at a given path of an object
+///
+/// @group object
+/// @param {List} path The path to use.
+/// @param {Object} map The map to retrieve the nested property from.
+/// @return {*} The data at `path` of the supplied object or null.
+///
+/// @example scss - path
+///
+///   $get-value: path(('a', 'b'), (a: (b: 2)));
+///   @debug $get-value; //=> 2
+
+@function path($path, $map) {
+    @return head(paths($path, $map));
+}

@@ -1,0 +1,72 @@
+@import 'true';
+@import '../src/paths';
+
+@include describe('paths [function]') {
+    $input: (
+        a: (
+            b: (
+                c: 1,
+                d: 2,
+            ),
+        ),
+        p: (
+            (
+                q: 3,
+            ),
+            'Hi',
+        ),
+        x: (
+            y: 'Alice',
+            z: (
+                (append((), ())),
+            ),
+        ),
+    );
+
+    @include it('takes paths and returns values at those paths') {
+        @include assert-equal(
+            paths(('a' 'b' 'c'), ('x' 'y'), $input),
+            (1 'Alice')
+        );
+        @include assert-equal(
+            paths(('a', 'b', 'd'), ('p', 'q'), $input),
+            (2 null)
+        );
+    }
+    @include it('takes a paths that contains indices into arrays') {
+        @include assert-equal(
+            paths(('p', 1, 'q'), ('x', 'z', 1, 1), $input),
+            (3 ())
+        );
+        @include assert-equal(
+            paths(('p', 1, 'q'), ('x', 'z', 3, 2), $input),
+            (3 null)
+        );
+    }
+    @include it('takes a path that contains negative indices into arrays') {
+        @include assert-equal(
+            paths(('p', -2, 'q'), ('p', -1), $input),
+            (3 'Hi')
+        );
+        @include assert-equal(
+            paths(('p', -4, 'q'), ('x', 'z', -1, 1), $input),
+            (null ())
+        );
+    }
+
+    @include it("gets a deep property's value from objects") {
+        @include assert-equal(
+            paths(('a' 'b'), $input),
+            append((), map-get(map-get($input, 'a'), 'b'))
+        );
+        @include assert-equal(
+            paths(('p' 1), $input),
+            append((), nth(map-get($input, 'p'), 1))
+        );
+    }
+
+    @include it('returns null for items not found') {
+        @include assert-equal(paths(('a' 'x' 'y'), $input), append((), null));
+        @include assert-equal(paths(('p' 3), $input), append((), null));
+    }
+}
