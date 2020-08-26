@@ -31,7 +31,7 @@
     "glob": "7.1.6",
     "jest": "26.4.2",
     "sass": "1.26.10",
-    "prettier": "2.1.0",
+    "prettier": "2.1.1",
     "sass-true": "6.0.0",
     "sassdoc": "2.7.3",
     "semantic-release": "17.1.1",
