@@ -1,13 +1,12 @@
+@import './internal/run-function-with-params';
 @import 'init';
 @import 'last';
-@import 'head';
-@import 'tail';
 
 /// Performs left-to-right function composition.
 ///
 /// @group function
-/// @param {Function...} functions... The functions to compose
-/// @return {Function}
+/// @param {Function...} params... The functions to compose
+/// @return {*}
 /// @see compose
 ///
 /// @example scss - pipe
@@ -28,16 +27,4 @@
     }
 
     @return $result;
-}
-
-@function _run-function-with-params($function, $input) {
-    $fn: if(type-of($function) == 'list', head($function), $function);
-    @if type-of($function) == 'list' or type-of($function) == 'arglist' {
-        $input: append(tail($function), $input);
-    }
-    @if function-exists($fn) {
-        @return call(get-function($fn), $input...);
-    } @else {
-        @return $input;
-    }
 }
