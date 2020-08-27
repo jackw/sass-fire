@@ -1,0 +1,23 @@
+@import 'true';
+@import '../src/prop-eq';
+
+@include describe('prop-eq [function]') {
+    $obj1: (
+        name: 'Abby',
+        age: 7,
+        hair: 'blond',
+    );
+    $obj2: (
+        name: 'Fred',
+        age: 12,
+        hair: 'brown',
+    );
+
+    @include it(
+        'determines whether a particular property matches a given value for a specific object'
+    ) {
+        @include assert-true(prop-eq('name', 'Abby', $obj1));
+        @include assert-true(prop-eq('hair', 'brown', $obj2));
+        @include assert-false(prop-eq('hair', 'blond', $obj2));
+    }
+}

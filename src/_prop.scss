@@ -1,0 +1,17 @@
+@import 'path';
+
+/// returns the indicated property of that object, if it exists.
+///
+/// @group object
+/// @param {String|Number} p The property name or array index
+/// @param {List|Object} map The map to query
+/// @return {*} The value at `map.p`
+///
+/// @example scss - prop
+///
+///   $get-prop: prop('a', (a: 2));
+///   @debug $get-prop; //=> 2
+
+@function prop($p, $map) {
+    @return path(append((), $p), $map);
+}
