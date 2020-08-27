@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/jackw/sass-fire/compare/v2.0.0...v2.1.0) (2020-08-27)
+
+
+### Bug Fixes
+
+* run-function-with-params should handle maps ([e95071f](https://github.com/jackw/sass-fire/commit/e95071f))
+
+
+### Features
+
+* introduce prop and prop-eq functions ([6b86ec4](https://github.com/jackw/sass-fire/commit/6b86ec4))
+* **list:** introduce aperture, find, includes, prepend, split-every ([7d23f74](https://github.com/jackw/sass-fire/commit/7d23f74))
+* **pass:** introduce all and any pass functions ([df76ba8](https://github.com/jackw/sass-fire/commit/df76ba8))
+* **split:** handle empty delimiter ([8afec42](https://github.com/jackw/sass-fire/commit/8afec42))
+
 # [2.0.0](https://github.com/jackw/sass-fire/compare/v1.2.1...v2.0.0) (2020-08-25)
 
 
