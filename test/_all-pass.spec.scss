@@ -1,0 +1,33 @@
+@import 'true';
+@import '../src/all-pass';
+
+@function _all-pass-spec-odd($n) {
+    @return $n % 2 != 0;
+}
+@function _all-pass-spec-lt20($n) {
+    @return $n < 20;
+}
+@function _all-pass-spec-gt5($n) {
+    @return $n > 5;
+}
+
+@include describe('all-pass [function]') {
+    @include it(
+        'reports whether all predicates are satisfied by a given value'
+    ) {
+        $ok: (
+            '_all-pass-spec-odd',
+            '_all-pass-spec-lt20',
+            '_all-pass-spec-gt5'
+        );
+        @include assert-true(all-pass($ok, 7));
+        @include assert-true(all-pass($ok, 9));
+        @include assert-false(all-pass($ok, 10));
+        @include assert-false(all-pass($ok, 3));
+        @include assert-false(all-pass($ok, 21));
+    }
+
+    @include it('returns false for an empty predicate list') {
+        @include assert-false(all-pass((), 3), false);
+    }
+}
