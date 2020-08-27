@@ -1,0 +1,29 @@
+@import './internal/run-function-with-params';
+@import 'inc';
+
+/// Takes a list of predicates and returns true for a given list
+/// of arguments if at least one of the provided predicates is
+/// satisfied by those arguments.
+///
+/// @group logic
+/// @param {List} $preds An array of predicates to check
+/// @param {*} $val The value to check against
+/// @return {Boolean}
+///
+/// @example scss - any-pass
+///
+///   $is-odd-gt20-lt5: any-pass((odd, gt20, lt5), 7);
+///   @debug $is-odd-gt20-lt5; //=> true
+
+@function any-pass($preds, $val) {
+    $idx: 1;
+    @while $idx <= length($preds) {
+        $fn: nth($preds, $idx);
+        $result: _run-function-with-params($fn, $val);
+        @if $result {
+            @return true;
+        }
+        $idx: inc($idx);
+    }
+    @return false;
+}

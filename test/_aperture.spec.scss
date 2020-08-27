@@ -1,0 +1,33 @@
+@import 'true';
+@import '../src/aperture';
+
+@include describe('aperture [function]') {
+    @include it('creates a list of n-tuples from a list') {
+        $seven-ls: (1, 2, 3, 4, 5, 6, 7);
+        @include assert-equal(
+            aperture(1, $seven-ls),
+            (1) (2) (3) (4) (5) (6) (7),
+            $inspect: true
+        );
+        @include assert-equal(
+            aperture(2, $seven-ls),
+            (1 2) (2 3) (3 4) (4 5) (5 6) (6 7),
+            $inspect: true
+        );
+        @include assert-equal(
+            aperture(3, $seven-ls),
+            (1 2 3) (2 3 4) (3 4 5) (4 5 6) (5 6 7),
+            $inspect: true
+        );
+        @include assert-equal(
+            aperture(4, (1, 2, 3, 4)),
+            append((), (1 2 3 4)),
+            $inspect: true
+        );
+    }
+
+    @include it('returns an empty list when `n` > `list.length`') {
+        @include assert-equal(aperture(6, (1, 2, 3)), ());
+        @include assert-equal(aperture(1, ()), ());
+    }
+}

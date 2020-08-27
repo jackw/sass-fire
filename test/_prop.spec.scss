@@ -1,0 +1,27 @@
+@import 'true';
+@import '../src/prop';
+
+@include describe('prop [function]') {
+    @include it('returns values in objects') {
+        @include assert-equal(
+            prop(
+                'a',
+                (
+                    a: 'b',
+                )
+            ),
+            'b'
+        );
+    }
+    @include it("returns null if prop doesn't exist") {
+        @include assert-equal(
+            prop(
+                'z',
+                (
+                    a: 'b',
+                )
+            ),
+            null
+        );
+    }
+}

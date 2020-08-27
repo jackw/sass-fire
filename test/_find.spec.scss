@@ -1,0 +1,44 @@
+@import 'true';
+@import '../src/find';
+
+@function _find_spec_isEven($n) {
+    @if type-of($n) == 'number' {
+        @return $n % 2 == 0;
+    }
+    @return false;
+}
+@function _find_spec_gt-100($n) {
+    @if type-of($n) == 'number' {
+        @return $n > 100;
+    }
+    @return false;
+}
+@function _find_spec_is-string($str) {
+    @return type-of($str) == 'string';
+}
+@function _find_spec_x-gt-100($o) {
+    @if type-of($o) == 'map' {
+        @return map-get($o, 'x') > 100;
+    }
+    @return false;
+}
+
+@include describe('find [function]') {
+    $obj: (
+        x: 200,
+    );
+    $a: [11, 10, 9, 'cow', $obj, 8, 7, 100, 200, 300, 4, 3, 2, 1, 0];
+
+    @include it('returns the first element that satisfies the predicate') {
+        @include assert-equal(find(_find_spec_isEven, $a), 10);
+        @include assert-equal(find(_find_spec_gt-100, $a), 200);
+        @include assert-equal(find(_find_spec_is-string, $a), 'cow');
+        @include assert-equal(find(_find_spec_x-gt-100, $a), $obj);
+    }
+    @include it('returns `null` when no element satisfies the predicate') {
+        @include assert-equal(find(_find_spec_isEven, ('zing')), null);
+    }
+    @include it('returns `null` when given an empty list') {
+        @include assert-equal(find(_find_spec_isEven, ()), null);
+    }
+}

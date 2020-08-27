@@ -1,3 +1,5 @@
+@import 'inc';
+
 /// Splits a string into an array of strings based on the given
 /// separator.
 ///
@@ -16,10 +18,18 @@
     $delimiter-length: str-length($sep);
     $idx: str-index($str, $sep);
     $result: ();
-    @while $idx != null {
-        $result: append($result, str-slice($str, 1, $idx - 1), 'comma');
-        $str: str-slice($str, $idx + $delimiter-length);
-        $idx: str-index($str, $sep);
+    @if ($delimiter-length == 0) {
+        @while $idx <= str-length($str) {
+            $result: append($result, str-slice($str, $idx, $idx), 'comma');
+            $idx: inc($idx);
+        }
+        @return $result;
+    } @else {
+        @while $idx != null {
+            $result: append($result, str-slice($str, 1, $idx - 1), 'comma');
+            $str: str-slice($str, $idx + $delimiter-length);
+            $idx: str-index($str, $sep);
+        }
+        @return append($result, $str);
     }
-    @return append($result, $str);
 }

@@ -1,0 +1,39 @@
+@use 'sass:math';
+@import 'slice';
+@import 'inc';
+
+/// Splits a collection into slices of the specified length.
+///
+/// @group list
+/// @param {Number} n
+/// @param {Array} list
+/// @return {Array}
+/// @see implode
+///
+/// @example scss - split-every
+///
+///   $splitted: split-every(2, (1, 2, 3, 4));
+///   @debug $splitted; //=> (1 2) (3 4);
+
+@function split-every($n, $list) {
+    @if $n <= 0 {
+        @error "First argument to split-every must be a positive integer";
+    }
+    $result: ();
+    $idx: 1;
+    $list-length: if(
+        type-of($list) == 'string',
+        str-length($list),
+        length($list)
+    );
+    $slice-to: if($n > $list-length, $list-length, $n);
+
+    @while $idx <= $list-length {
+        $slice: slice($idx, $slice-to, $list);
+        $result: append($result, $slice);
+        $idx: $slice-to + 1;
+        $slice-to: math.clamp($idx, $slice-to + $n, $list-length);
+    }
+
+    @return $result;
+}

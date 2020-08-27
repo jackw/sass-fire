@@ -4,7 +4,7 @@ const glob = require('glob');
 
 describe('Sass Fire', () => {
     const sassTestFiles = glob.sync(
-        path.resolve(process.cwd(), 'test/*.spec.scss')
+        path.resolve(process.cwd(), 'test/**/*.spec.scss')
     );
 
     sassTestFiles.forEach((file) =>

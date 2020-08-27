@@ -1,0 +1,30 @@
+@import 'inc';
+
+/// Returns the first element of the list which matches the predicate, or
+/// `null` if no element matches.
+///
+/// @group list
+/// @param {Function} pred The predicate function used to determine if the element is the desired one.
+/// @param {Array} list The array to consider.
+/// @return {*} The element found, or `null`.
+/// @see reject
+///
+/// @example scss - find
+///
+///   @function isEven($n) {
+///     @return $n % 2 == 0;
+///   }
+///   $find-first-even: find(isEven, (1, 2, 3, 4));
+///   @debug $find-first-even; //=> (2 4)
+
+@function find($pred, $list) {
+    $idx: 1;
+    @while $idx <= length($list) {
+        $result: call(get-function($pred), nth($list, $idx));
+        @if $result {
+            @return nth($list, $idx);
+        }
+        $idx: inc($idx);
+    }
+    @return null;
+}

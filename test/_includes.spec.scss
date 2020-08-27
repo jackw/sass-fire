@@ -1,0 +1,29 @@
+@import 'true';
+@import '../src/includes';
+
+@include describe('includes [function]') {
+    @include it('returns true if an element is in a list') {
+        @include assert-true(includes(7, (1, 2, 3, 9, 8, 7, 100, 200, 300)));
+        @include assert-true(
+            includes(
+                (
+                    name: 'Thor',
+                ),
+                ((name: 'Thor'), (name: 'Iron Man'), (name: 'Black Widow'))
+            )
+        );
+    }
+
+    @include it('returns false if an element is not in a list') {
+        @include assert-false(includes(99, (1, 2, 3, 9, 8, 7, 100, 200, 300)));
+    }
+
+    @include it('returns false for the empty list') {
+        @include assert-false(includes(1, ()));
+    }
+
+    @include it('returns true if substring is part of string') {
+        @include assert-true(includes('ba', 'banana'));
+        @include assert-false(includes('no thanks', 'yes please'));
+    }
+}

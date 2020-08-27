@@ -1,0 +1,22 @@
+@import 'equals';
+@import 'prop';
+
+/// Returns `true` if the specified object property is equal
+/// to the given value; `false` otherwise.
+///
+/// @group relation
+/// @param {String} name
+/// @param {*} val
+/// @param {*} map
+/// @return {Boolean}
+///
+/// @example scss - prop-eq
+///
+///   @function has-brown-hair($item) { @return prop-eq('hair', 'brown', $item); }
+///   $brown-haired-avengers: filter(has-brown-hair, $avengers);
+///   @debug $brown-haired-avengers; //=> ('Iron Man', 'Hawkeye', 'Black Widow')
+
+@function prop-eq($name, $val, $map) {
+    $value: prop($name, $map);
+    @return equals($value, $val);
+}
