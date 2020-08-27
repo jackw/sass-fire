@@ -1,0 +1,26 @@
+@import 'true';
+@import '../../src/internal/run-function-with-params';
+
+@function _sass-fire-run-func-params-spec-darken($percent, $color) {
+    @return darken($color, $percent);
+}
+
+@include describe('run-function-with-params [function]') {
+    @include it('calls a function with the params passed to it') {
+        @include assert-equal(_run-function-with-params(abs, -20), 20);
+    }
+
+    @include it('calls a function passing in the params supplied') {
+        @include assert-equal(
+            _run-function-with-params(
+                (_sass-fire-run-func-params-spec-darken 20%),
+                #963e7e
+            ),
+            #4e2041
+        );
+    }
+
+    @include it("returns the input if the function doesn't exist") {
+        @include assert-equal(_run-function-with-params(noop, -20), -20);
+    }
+}
