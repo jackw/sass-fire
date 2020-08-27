@@ -21,6 +21,10 @@
 ///   @debug $first; //=> 'hello worl'
 
 @function init($list) {
-    $length: if(meta.type-of($list) == 'string', string.length($list), list.length($list));
+    $length: if(
+        meta.type-of($list) == 'string',
+        string.length($list),
+        list.length($list)
+    );
     @return slice.slice(1, $length - 1, $list);
 }

@@ -22,13 +22,21 @@
     $result: ();
     @if ($delimiter-length == 0) {
         @while $idx <= string.length($str) {
-            $result: list.append($result, string.slice($str, $idx, $idx), 'comma');
+            $result: list.append(
+                $result,
+                string.slice($str, $idx, $idx),
+                'comma'
+            );
             $idx: inc.inc($idx);
         }
         @return $result;
     } @else {
         @while $idx != null {
-            $result: list.append($result, string.slice($str, 1, $idx - 1), 'comma');
+            $result: list.append(
+                $result,
+                string.slice($str, 1, $idx - 1),
+                'comma'
+            );
             $str: string.slice($str, $idx + $delimiter-length);
             $idx: string.index($str, $sep);
         }

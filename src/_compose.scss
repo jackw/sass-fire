@@ -27,7 +27,10 @@
 
     @for $i from list.length($function-list) * -1 through -1 {
         $function: list.nth($function-list, math.abs($i));
-        $result: run-function-with-params.run-function-with-params($function, $result);
+        $result: run-function-with-params.run-function-with-params(
+            $function,
+            $result
+        );
     }
 
     @return $result;

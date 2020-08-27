@@ -24,7 +24,11 @@ $_sass-fire-intersection-array: ();
     $lookup: if(list.length($list1) > list.length($list2), $list1, $list2);
     $filtered: if(list.length($list1) > list.length($list2), $list2, $list1);
     $_sass-fire-intersection-array: $filtered !global;
-    $result: compose.compose(uniq, (filter, _sass-fire-intersection-filter), $lookup);
+    $result: compose.compose(
+        uniq,
+        (filter, _sass-fire-intersection-filter),
+        $lookup
+    );
     @return $result;
 }
 

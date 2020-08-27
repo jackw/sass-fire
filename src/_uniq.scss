@@ -19,7 +19,8 @@
 @function uniq($list...) {
     $result: ();
 
-    @if meta.type-of($list) == arglist and list.length(list.nth($list, 1)) == 0 {
+    @if meta.type-of($list) == arglist and list.length(list.nth($list, 1)) == 0
+    {
         @return $result;
     }
 

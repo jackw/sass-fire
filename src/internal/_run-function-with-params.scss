@@ -5,7 +5,11 @@
 
 @function run-function-with-params($function, $input) {
     $fn: if(meta.type-of($function) == 'list', head.head($function), $function);
-    @if meta.type-of($function) == 'list' or meta.type-of($function) == 'arglist' {
+    @if meta.type-of($function) ==
+        'list' or
+        meta.type-of($function) ==
+        'arglist'
+    {
         $input: list.append(tail.tail($function), $input);
     }
     @if meta.function-exists($fn) {

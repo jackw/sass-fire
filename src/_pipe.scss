@@ -23,7 +23,10 @@
     $result: last.last($params);
 
     @each $function in $function-list {
-        $result: run-function-with-params.run-function-with-params($function, $result);
+        $result: run-function-with-params.run-function-with-params(
+            $function,
+            $result
+        );
     }
 
     @return $result;

@@ -41,5 +41,9 @@ $_sass-fire-merge-deep-with-fn: '';
 
 // calls the passed in merge-with function without key
 @function _sass-fire-merge-deep-with-caller($k, $l-val, $r-val) {
-    @return meta.call(meta.get-function($_sass-fire-merge-deep-with-fn), $l-val, $r-val);
+    @return meta.call(
+        meta.get-function($_sass-fire-merge-deep-with-fn),
+        $l-val,
+        $r-val
+    );
 }
