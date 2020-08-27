@@ -1,0 +1,39 @@
+@import 'true';
+@import '../src/split-every';
+
+@include describe('split-every [function]') {
+    @include it('splits a collection into slices of the specified length') {
+        @include assert-equal(
+            split-every(1, (1, 2, 3, 4)),
+            (1) (2) (3) (4),
+            $inspect: true
+        );
+        @include assert-equal(
+            split-every(2, (1, 2, 3, 4)),
+            (1 2) (3 4),
+            $inspect: true
+        );
+        @include assert-equal(
+            split-every(3, (1, 2, 3, 4)),
+            (1 2 3) (4),
+            $inspect: true
+        );
+        @include assert-equal(
+            split-every(4, (1, 2, 3, 4)),
+            append((), (1 2 3 4)),
+            $inspect: true
+        );
+        @include assert-equal(
+            split-every(5, (1, 2, 3, 4)),
+            append((), (1 2 3 4)),
+            $inspect: true
+        );
+        @include assert-equal(split-every(3, ()), ());
+        @include assert-equal(split-every(1, 'abcd'), ('a' 'b' 'c' 'd'));
+        @include assert-equal(split-every(2, 'abcd'), ('ab') ('cd'));
+        @include assert-equal(split-every(3, 'abcd'), ('abc') ('d'));
+        @include assert-equal(split-every(4, 'abcd'), append((), ('abcd')));
+        @include assert-equal(split-every(5, 'abcd'), append((), ('abcd')));
+        @include assert-equal(split-every(3, ''), ());
+    }
+}

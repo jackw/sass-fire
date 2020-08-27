@@ -1,0 +1,37 @@
+@use 'sass:math';
+@import 'slice';
+@import 'inc';
+
+/// Returns a new list, composed of n-tuples of consecutive elements. If `n` is
+/// greater than the length of the list, an empty list is returned.
+///
+/// @group list
+/// @param {Number} n The size of the tuples to create
+/// @param {Array} list The list to split into `n`-length tuples
+/// @return {Array} The resulting list of `n`-length tuples
+///
+/// @example scss - aperture
+///
+///   $consecutive: aperture(2, (1, 2, 3, 4, 5);
+///   @debug $consecutive; //=> (1 2) (2 3) (3 4) (4 5)
+
+@function aperture($n, $list) {
+    @if ($n > length($list)) {
+        @return ();
+    }
+    $result: ();
+    $idx: 1;
+    $step: $n - 1;
+    $list-length: length($list);
+    $slice-to: if($n > $list-length, $list-length, $n);
+    @while $idx <= $list-length {
+        @if $idx > $list-length - $step {
+            @return $result;
+        }
+        $slice: slice($idx, $slice-to, $list);
+        $result: append($result, $slice);
+        $idx: $idx + 1;
+        $slice-to: math.clamp($idx, $idx + $step, $list-length);
+    }
+    @return $result;
+}

@@ -1,0 +1,16 @@
+@import 'true';
+@import '../src/prepend';
+
+@include describe('prepend [function]') {
+    @include it('adds the element to the beginning of the list') {
+        @include assert-equal(prepend('x', ('y', 'z')), ('x' 'y' 'z'));
+        @include assert-equal(
+            prepend(('a', 'z'), ('x', 'y')),
+            ('a', 'z') 'x' 'y'
+        );
+    }
+
+    @include it('works on empty list') {
+        @include assert-equal(prepend(1, ()), (1), $inspect: true);
+    }
+}
