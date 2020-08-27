@@ -1,6 +1,9 @@
 @import 'F';
 @import 'T';
 @import 'add';
+@import 'all-pass';
+@import 'any-pass';
+@import 'aperture';
 @import 'assoc';
 @import 'compose';
 @import 'concat';
@@ -10,6 +13,7 @@
 @import 'eq-by';
 @import 'equals';
 @import 'filter';
+@import 'find';
 @import 'gt';
 @import 'gte';
 @import 'has';
@@ -18,6 +22,7 @@
 @import 'identity';
 @import 'implode';
 @import 'inc';
+@import 'includes';
 @import 'init';
 @import 'inner-join';
 @import 'intersection';
@@ -48,11 +53,15 @@
 @import 'paths';
 @import 'pick';
 @import 'pipe';
+@import 'prepend';
 @import 'product';
+@import 'prop-eq';
+@import 'prop';
 @import 'props';
 @import 'reduce';
 @import 'reject';
 @import 'slice';
+@import 'split-every';
 @import 'split';
 @import 'subtract';
 @import 'sum';
