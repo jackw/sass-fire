@@ -1,22 +1,50 @@
 @import 'true';
 @import '../../src/internal/run-function-with-params';
 
-@function _sass-fire-run-func-params-spec-darken($percent, $color) {
+@function _run-func-params-spec-darken($percent, $color) {
     @return darken($color, $percent);
+}
+
+@function _run-func-params-spec-darken-map($percent, $map) {
+    @return darken(map-get($map, 'value'), $percent);
+}
+
+@function _run-func-params-spec-x-gt-100($o) {
+    @if type-of($o) == 'map' {
+        @return map-get($o, 'x') > 100;
+    }
+    @return false;
 }
 
 @include describe('run-function-with-params [function]') {
     @include it('calls a function with the params passed to it') {
         @include assert-equal(_run-function-with-params(abs, -20), 20);
+        @include assert-true(
+            _run-function-with-params(
+                _run-func-params-spec-x-gt-100,
+                (
+                    x: 200,
+                )
+            )
+        );
     }
 
     @include it('calls a function passing in the params supplied') {
         @include assert-equal(
             _run-function-with-params(
-                (_sass-fire-run-func-params-spec-darken 20%),
+                (_run-func-params-spec-darken 20%),
                 #963e7e
             ),
             #4e2041
+        );
+        @include assert-equal(
+            _run-function-with-params(
+                (_run-func-params-spec-darken-map 40%),
+                (
+                    'value': #c30c30,
+                )
+            ),
+            #030001
         );
     }
 

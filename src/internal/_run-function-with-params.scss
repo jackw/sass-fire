@@ -7,7 +7,11 @@
         $input: append(tail($function), $input);
     }
     @if function-exists($fn) {
-        @return call(get-function($fn), $input...);
+        @if type-of($input) == 'map' {
+            @return call(get-function($fn), $input);
+        } @else {
+            @return call(get-function($fn), $input...);
+        }
     } @else {
         @return $input;
     }
