@@ -1,3 +1,4 @@
+@use "sass:map";
 /// Makes a shallow clone of an object, setting or overriding the specified
 /// property with the given value.
 ///
@@ -19,5 +20,5 @@
 ///   @debug $set-prop; //=> ( a: 1, b: 2, c: 3)
 
 @function assoc($prop, $val, $obj) {
-    @return map-merge($obj, (#{$prop}: $val));
+    @return map.merge($obj, (#{$prop}: $val));
 }

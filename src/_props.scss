@@ -1,4 +1,6 @@
-@import 'inc';
+@use "sass:list";
+@use "sass:map";
+@use 'inc';
 
 /// Acts as multiple `prop`: array of keys in, array of values out.
 ///
@@ -13,18 +15,18 @@
 ///   @debug $list-of-values-plz; //=> (1, 4)
 
 @function props($names, $obj) {
-    $length: length($names);
+    $length: list.length($names);
     $result: ();
     $idx: 1;
     // TODO: use pick and map-values instead of while.
     @while ($idx <= $length) {
-        $key: nth($names, $idx);
-        @if (map-has-key($obj, $key)) {
-            $result: append($result, map-get($obj, $key), 'comma');
+        $key: list.nth($names, $idx);
+        @if (map.has-key($obj, $key)) {
+            $result: list.append($result, map.get($obj, $key), 'comma');
         } @else {
-            $result: append($result, false, 'comma');
+            $result: list.append($result, false, 'comma');
         }
-        $idx: inc($idx);
+        $idx: inc.inc($idx);
     }
     @return $result;
 }

@@ -1,3 +1,4 @@
+@use "sass:map";
 /// Merges a list of objects together into one object.
 ///
 /// @group list
@@ -16,7 +17,7 @@
 @function merge-all($list) {
     $result: ();
     @each $item in $list {
-        $result: map-merge($result, $item);
+        $result: map.merge($result, $item);
     }
 
     @return $result;

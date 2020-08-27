@@ -1,4 +1,6 @@
-@import 'inc';
+@use "sass:list";
+@use "sass:map";
+@use 'inc';
 
 /// Returns whether or not a path exists in an object.
 ///
@@ -16,16 +18,16 @@
 ///   @debug $no-has-path; //=> false
 
 @function hasPath($path, $obj) {
-    @if length($path) == 0 {
+    @if list.length($path) == 0 {
         @return false;
     }
     $val: $obj;
     $idx: 1;
 
-    @while $idx <= length($path) {
-        @if map-has-key($val, nth($path, $idx)) {
-            $val: map-get($val, nth($path, $idx));
-            $idx: inc($idx);
+    @while $idx <= list.length($path) {
+        @if map.has-key($val, list.nth($path, $idx)) {
+            $val: map.get($val, list.nth($path, $idx));
+            $idx: inc.inc($idx);
         } @else {
             @return false;
         }

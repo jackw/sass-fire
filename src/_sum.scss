@@ -1,5 +1,5 @@
-@import 'add';
-@import 'reduce';
+@use 'add';
+@use 'reduce';
 
 /// Adds a list of numbers together.
 ///
@@ -13,5 +13,5 @@
 ///   @debug $add-list; //=> 450
 
 @function sum($list) {
-    @return reduce(add, 0, $list);
+    @return reduce.reduce(add, 0, $list);
 }

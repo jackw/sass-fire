@@ -1,4 +1,7 @@
-@import 'slice';
+@use "sass:list";
+@use "sass:meta";
+@use "sass:string";
+@use 'slice';
 
 /// Returns all but the last element of the given list or string.
 ///
@@ -18,6 +21,6 @@
 ///   @debug $first; //=> 'hello worl'
 
 @function init($list) {
-    $length: if(type-of($list) == 'string', str-length($list), length($list));
-    @return slice(1, $length - 1, $list);
+    $length: if(meta.type-of($list) == 'string', string.length($list), list.length($list));
+    @return slice.slice(1, $length - 1, $list);
 }

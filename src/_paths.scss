@@ -1,7 +1,11 @@
-@import 'inc';
-@import 'init';
-@import 'last';
-@import 'map';
+@use "sass:list";
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+@use 'inc';
+@use 'init';
+@use 'last';
+@use 'map' as map2;
 
 $_sass-fire-paths-map: ();
 
@@ -18,11 +22,11 @@ $_sass-fire-paths-map: ();
 ///   @debug $get-values; //=> (2, 3)
 
 @function paths($args...) {
-    $map: last($args);
-    $paths: init($args);
+    $map: last.last($args);
+    $paths: init.init($args);
     $_sass-fire-paths-map: $map !global;
 
-    @return map(_sass-fire-path, $paths);
+    @return map2.map(_sass-fire-path, $paths);
 }
 
 @function _sass-fire-path($path) {
@@ -30,28 +34,28 @@ $_sass-fire-paths-map: ();
     $idx: 1;
     $p: null;
 
-    @while ($idx <= length($path)) {
+    @while ($idx <= list.length($path)) {
         @if $val == null {
             @return null;
         }
-        $p: nth($path, $idx);
-        @if type-of($val) == 'map' {
-            $val: if(map-has-key($val, $p), map-get($val, $p), null);
+        $p: list.nth($path, $idx);
+        @if meta.type-of($val) == 'map' {
+            $val: if(map.has-key($val, $p), map.get($val, $p), null);
         } @else if
-            type-of($val) ==
+            meta.type-of($val) ==
             'list' and
-            type-of($p) ==
+            meta.type-of($p) ==
             'number' and
             $p !=
             0 and
-            abs($p) <=
-            length($val)
+            math.abs($p) <=
+            list.length($val)
         {
-            $val: nth($val, $p);
+            $val: list.nth($val, $p);
         } @else {
             $val: null;
         }
-        $idx: inc($idx);
+        $idx: inc.inc($idx);
     }
 
     @return $val;

@@ -1,3 +1,5 @@
+@use "sass:list";
+@use "sass:meta";
 /// Returns a single item by iterating through the list, successively calling
 /// the iterator function and passing it an accumulator value and the current
 /// value from the array, and then passing the result to the next call.
@@ -16,11 +18,11 @@
 
 @function reduce($function, $acc, $list) {
     $accumulator: $acc;
-    @for $i from 1 through length($list) {
-        $accumulator: call(
-            get-function($function),
+    @for $i from 1 through list.length($list) {
+        $accumulator: meta.call(
+            meta.get-function($function),
             $accumulator,
-            nth($list, $i)
+            list.nth($list, $i)
         );
     }
 

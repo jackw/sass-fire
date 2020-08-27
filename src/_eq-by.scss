@@ -1,4 +1,5 @@
-@import 'equals';
+@use "sass:meta";
+@use 'equals';
 
 ///
 /// Takes a function and two values in its domain and returns `true` if the
@@ -17,7 +18,7 @@
 ///
 
 @function eq-by($fn, $x, $y) {
-    $a: call(get-function($fn), $x);
-    $b: call(get-function($fn), $y);
-    @return equals($a, $b);
+    $a: meta.call(meta.get-function($fn), $x);
+    $b: meta.call(meta.get-function($fn), $y);
+    @return equals.equals($a, $b);
 }

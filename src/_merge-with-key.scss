@@ -1,3 +1,5 @@
+@use "sass:map";
+@use "sass:meta";
 /// Creates a new object with the own properties of the two provided objects. If
 /// a key exists in both objects, the provided function is applied to the key
 /// and the values associated with the key in each object, with the result being
@@ -26,25 +28,25 @@
     $result: ();
     $k: ();
     @each $key, $value in $l {
-        @if map-has-key($r, $key) {
+        @if map.has-key($r, $key) {
             $k: (
                 #{$key}:
-                    call(
-                        get-function($fn),
+                    meta.call(
+                        meta.get-function($fn),
                         $key,
-                        map-get($l, $key),
-                        map-get($r, $key)
+                        map.get($l, $key),
+                        map.get($r, $key)
                     )
             );
         } @else {
-            $k: (#{$key}: map-get($l, $key));
+            $k: (#{$key}: map.get($l, $key));
         }
-        $result: map-merge($result, $k);
+        $result: map.merge($result, $k);
     }
 
     @each $key, $value in $r {
-        @if not map-has-key($result, $key) {
-            $result: map-merge($result, (#{$key}: $value));
+        @if not map.has-key($result, $key) {
+            $result: map.merge($result, (#{$key}: $value));
         }
     }
 

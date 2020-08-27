@@ -1,4 +1,6 @@
-@import 'reduce';
+@use "sass:list";
+@use "sass:meta";
+@use 'reduce';
 
 ///
 /// Returns a new list containing only one copy of each element in the original
@@ -17,19 +19,19 @@
 @function uniq($list...) {
     $result: ();
 
-    @if type-of($list) == arglist and length(nth($list, 1)) == 0 {
+    @if meta.type-of($list) == arglist and list.length(list.nth($list, 1)) == 0 {
         @return $result;
     }
 
     $_list: if(
-        type-of($list) == arglist and length($list) == 1,
-        reduce(append, (), nth($list, 1)),
+        meta.type-of($list) == arglist and list.length($list) == 1,
+        reduce.reduce(append, (), list.nth($list, 1)),
         $list
     );
     @each $item in $_list {
         // should probably test with `get-function` for functions.
-        @if not index($result, $item) {
-            $result: append($result, $item);
+        @if not list.index($result, $item) {
+            $result: list.append($result, $item);
         }
     }
 

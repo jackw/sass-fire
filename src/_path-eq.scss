@@ -1,5 +1,5 @@
-@import 'path';
-@import 'equals';
+@use 'path';
+@use 'equals';
 
 /// Determines whether a nested path on an object has a specific value.
 /// Most likely used to filter a list.
@@ -16,5 +16,5 @@
 ///   @debug $is-42; //=> true
 
 @function path-eq($path, $value, $map) {
-    @return equals(path($path, $map), $value);
+    @return equals.equals(path.path($path, $map), $value);
 }

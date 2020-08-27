@@ -1,4 +1,7 @@
-@import 'slice';
+@use "sass:list";
+@use "sass:meta";
+@use "sass:string";
+@use 'slice';
 
 /// Returns all but the first element of the given list or string.
 ///
@@ -20,6 +23,6 @@
 ///   @debug $without-first; //=> 'ello world'
 
 @function tail($list) {
-    $length: if(type-of($list) == 'string', str-length($list), length($list));
-    @return slice(2, $length, $list);
+    $length: if(meta.type-of($list) == 'string', string.length($list), list.length($list));
+    @return slice.slice(2, $length, $list);
 }

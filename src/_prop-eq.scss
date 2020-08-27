@@ -1,5 +1,5 @@
-@import 'equals';
-@import 'prop';
+@use 'equals';
+@use 'prop';
 
 /// Returns `true` if the specified object property is equal
 /// to the given value; `false` otherwise.
@@ -17,6 +17,6 @@
 ///   @debug $brown-haired-avengers; //=> ('Iron Man', 'Hawkeye', 'Black Widow')
 
 @function prop-eq($name, $val, $map) {
-    $value: prop($name, $map);
-    @return equals($value, $val);
+    $value: prop.prop($name, $map);
+    @return equals.equals($value, $val);
 }

@@ -1,4 +1,5 @@
-@import 'sum';
+@use "sass:list";
+@use 'sum';
 
 /// Returns the mean average of the given list of numbers.
 ///
@@ -12,5 +13,5 @@
 ///   @debug $mean-average; //=> 6
 
 @function mean($list...) {
-    @return sum($list) / length($list);
+    @return sum.sum($list) / list.length($list);
 }

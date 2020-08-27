@@ -1,3 +1,6 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
 /// Takes a function and applies the function to each of the functor's values,
 /// and returns a functor of the same shape.
 /// sass-fire provides suitable map implementations for List and Map.
@@ -21,21 +24,21 @@
 @function map($function, $list) {
     $accumulator: ();
 
-    @if type-of($list) == 'map' {
+    @if meta.type-of($list) == 'map' {
         @each $key, $value in $list {
-            $accumulator: map-merge(
+            $accumulator: map.merge(
                 $accumulator,
                 (
-                    $key: call(get-function($function), $value),
+                    $key: meta.call(meta.get-function($function), $value),
                 )
             );
         }
     } @else {
-        @for $i from 1 through length($list) {
-            $item: nth($list, $i);
-            $accumulator: append(
+        @for $i from 1 through list.length($list) {
+            $item: list.nth($list, $i);
+            $accumulator: list.append(
                 $accumulator,
-                call(get-function($function), $item)
+                meta.call(meta.get-function($function), $item)
             );
         }
     }

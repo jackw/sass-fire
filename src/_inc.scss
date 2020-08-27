@@ -1,4 +1,4 @@
-@import 'add';
+@use 'add';
 
 /// Increments its argument.
 ///
@@ -13,5 +13,5 @@
 ///   @debug $twenty; //=> 20
 
 @function inc($n) {
-    @return add($n, 1);
+    @return add.add($n, 1);
 }

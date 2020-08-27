@@ -1,3 +1,4 @@
+@use "sass:list";
 /// Returns a new list without values in the first argument.
 /// `equals` is used to determine equality.
 ///
@@ -14,8 +15,8 @@
 @function without($list1, $list2) {
     $result: [];
     @each $item in $list2 {
-        @if not index($list1, $item) {
-            $result: append($result, $item, 'comma');
+        @if not list.index($list1, $item) {
+            $result: list.append($result, $item, 'comma');
         }
     }
     @return $result;

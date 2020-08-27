@@ -1,4 +1,4 @@
-@import 'omit';
+@use 'omit';
 
 /// Returns a new object that does not contain a `prop` property.
 ///
@@ -16,5 +16,5 @@
 ///   @debug $remove-prop; //=> (a: 1, c: 3)
 
 @function dissoc($prop, $obj) {
-    @return omit(($prop), $obj);
+    @return omit.omit(($prop), $obj);
 }

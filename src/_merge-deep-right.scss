@@ -1,4 +1,4 @@
-@import 'merge-deep-with-key';
+@use 'merge-deep-with-key';
 
 /// Creates a new object with the own properties of the first object merged with
 /// the own properties of the second object. If a key exists in both objects:
@@ -24,7 +24,7 @@
 ///   @debug $merge-objs; //=> ( name: 'fred', age: 40, contact: ( email: 'baa@example.com' ))
 
 @function merge-deep-right($l-obj, $r-obj) {
-    @return merge-deep-with-key(
+    @return merge-deep-with-key.merge-deep-with-key(
         _sass-fire-merge-deep-right-caller,
         $l-obj,
         $r-obj

@@ -1,4 +1,4 @@
-@import 'head';
+@use 'head';
 
 /// A function that does nothing but return the parameter supplied to it. Good
 /// as a default or placeholder function.
@@ -12,5 +12,5 @@
 ///   @debug $is-one; //=> 1
 
 @function identity($args...) {
-    @return head($args);
+    @return head.head($args);
 }

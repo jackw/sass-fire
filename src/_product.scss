@@ -1,5 +1,5 @@
-@import 'multiply';
-@import 'reduce';
+@use 'multiply';
+@use 'reduce';
 
 /// Multiplies together all the elements of a list.
 ///
@@ -13,5 +13,5 @@
 ///   @debug $multipy-list; //=> 76800
 
 @function product($list...) {
-    @return reduce(multiply, 1, $list);
+    @return reduce.reduce(multiply, 1, $list);
 }

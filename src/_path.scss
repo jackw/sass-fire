@@ -1,5 +1,5 @@
-@import 'head';
-@import 'paths';
+@use 'head';
+@use 'paths';
 
 /// Retrieves the value at a given path of an object
 ///
@@ -14,5 +14,5 @@
 ///   @debug $get-value; //=> 2
 
 @function path($path, $map) {
-    @return head(paths($path, $map));
+    @return head.head(paths.paths($path, $map));
 }

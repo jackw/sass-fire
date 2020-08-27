@@ -1,5 +1,7 @@
-@import 'mean';
-@import 'slice';
+@use "sass:list";
+@use "sass:math";
+@use 'mean';
+@use 'slice';
 
 /// Returns the median average of the given list of numbers.
 ///
@@ -13,17 +15,17 @@
 ///   @debug $median-average; //=> 7
 
 @function median($list...) {
-    $length: length($list);
+    $length: list.length($list);
     $sorted-list: __sort-list-of-numbers($list);
     $width: 2 - $length % 2;
     $idx: ($length - $width) / 2;
     // compensate for list index starting at 1
-    $result: slice($idx + 1, ($idx + $width), $sorted-list);
+    $result: slice.slice($idx + 1, ($idx + $width), $sorted-list);
 
-    @if length($result) == 1 {
-        @return nth($result, 1);
+    @if list.length($result) == 1 {
+        @return list.nth($result, 1);
     } @else {
-        @return mean($result...);
+        @return mean.mean($result...);
     }
 }
 
@@ -33,21 +35,21 @@
     $equal: ();
     $large: ();
 
-    @if length($list) > 1 {
-        $seed: nth($list, ceil(length($list) / 2));
+    @if list.length($list) > 1 {
+        $seed: list.nth($list, math.ceil(list.length($list) / 2));
 
         @each $item in $list {
             @if ($item == $seed) {
-                $equal: append($equal, $item);
+                $equal: list.append($equal, $item);
             } @else if ($item < $seed) {
-                $less: append($less, $item);
+                $less: list.append($less, $item);
             } @else if ($item > $seed) {
-                $large: append($large, $item);
+                $large: list.append($large, $item);
             }
         }
 
-        @return join(
-            join(__sort-list-of-numbers($less), $equal),
+        @return list.join(
+            list.join(__sort-list-of-numbers($less), $equal),
             __sort-list-of-numbers($large)
         );
     }

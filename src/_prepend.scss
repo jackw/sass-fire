@@ -1,4 +1,5 @@
-@import 'concat';
+@use "sass:list";
+@use 'concat';
 
 ///
 /// Returns a new list with the given element at the front, followed by the
@@ -15,5 +16,5 @@
 ////
 
 @function prepend($el, $list) {
-    @return concat(append((), $el), $list);
+    @return concat.concat(list.append((), $el), $list);
 }

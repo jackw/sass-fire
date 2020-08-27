@@ -1,4 +1,6 @@
-@import 'inc';
+@use "sass:list";
+@use "sass:meta";
+@use 'inc';
 
 /// Returns the first element of the list which matches the predicate, or
 /// `null` if no element matches.
@@ -19,12 +21,12 @@
 
 @function find($pred, $list) {
     $idx: 1;
-    @while $idx <= length($list) {
-        $result: call(get-function($pred), nth($list, $idx));
+    @while $idx <= list.length($list) {
+        $result: meta.call(meta.get-function($pred), list.nth($list, $idx));
         @if $result {
-            @return nth($list, $idx);
+            @return list.nth($list, $idx);
         }
-        $idx: inc($idx);
+        $idx: inc.inc($idx);
     }
     @return null;
 }

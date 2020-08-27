@@ -1,4 +1,5 @@
-@import 'merge-deep-with-key';
+@use "sass:meta";
+@use 'merge-deep-with-key';
 
 // as gross as this is there is no way that I know of to get around it. :(
 $_sass-fire-merge-deep-with-fn: '';
@@ -31,7 +32,7 @@ $_sass-fire-merge-deep-with-fn: '';
 
 @function merge-deep-with($fn, $l-obj, $r-obj) {
     $_sass-fire-merge-deep-with-fn: $fn !global;
-    @return merge-deep-with-key(
+    @return merge-deep-with-key.merge-deep-with-key(
         _sass-fire-merge-deep-with-caller,
         $l-obj,
         $r-obj
@@ -40,5 +41,5 @@ $_sass-fire-merge-deep-with-fn: '';
 
 // calls the passed in merge-with function without key
 @function _sass-fire-merge-deep-with-caller($k, $l-val, $r-val) {
-    @return call(get-function($_sass-fire-merge-deep-with-fn), $l-val, $r-val);
+    @return meta.call(meta.get-function($_sass-fire-merge-deep-with-fn), $l-val, $r-val);
 }

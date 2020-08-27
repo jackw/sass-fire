@@ -1,5 +1,5 @@
-@import 'split';
-@import 'implode';
+@use 'split';
+@use 'implode';
 /// Removes (strips) whitespace from both ends of the string.
 ///
 /// @group string
@@ -12,6 +12,6 @@
 ///   @debug $trimmed; //=> 'thedonkeyjumpedoverthelazysnake'
 
 @function trim($str) {
-    $result: split(' ', $str);
-    @return implode($xs: $result);
+    $result: split.split(' ', $str);
+    @return implode.implode($xs: $result);
 }

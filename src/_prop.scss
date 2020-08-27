@@ -1,4 +1,5 @@
-@import 'path';
+@use "sass:list";
+@use 'path';
 
 /// returns the indicated property of that object, if it exists.
 ///
@@ -13,5 +14,5 @@
 ///   @debug $get-prop; //=> 2
 
 @function prop($p, $map) {
-    @return path(append((), $p), $map);
+    @return path.path(list.append((), $p), $map);
 }

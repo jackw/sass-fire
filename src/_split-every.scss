@@ -1,6 +1,9 @@
 @use 'sass:math';
-@import 'slice';
-@import 'inc';
+@use "sass:list";
+@use "sass:meta";
+@use "sass:string";
+@use 'slice';
+@use 'inc';
 
 /// Splits a collection into slices of the specified length.
 ///
@@ -22,15 +25,15 @@
     $result: ();
     $idx: 1;
     $list-length: if(
-        type-of($list) == 'string',
-        str-length($list),
-        length($list)
+        meta.type-of($list) == 'string',
+        string.length($list),
+        list.length($list)
     );
     $slice-to: if($n > $list-length, $list-length, $n);
 
     @while $idx <= $list-length {
-        $slice: slice($idx, $slice-to, $list);
-        $result: append($result, $slice);
+        $slice: slice.slice($idx, $slice-to, $list);
+        $result: list.append($result, $slice);
         $idx: $slice-to + 1;
         $slice-to: math.clamp($idx, $slice-to + $n, $list-length);
     }

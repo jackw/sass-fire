@@ -1,6 +1,6 @@
-@import './internal/run-function-with-params';
-@import 'init';
-@import 'last';
+@use './internal/run-function-with-params';
+@use 'init';
+@use 'last';
 
 /// Performs left-to-right function composition.
 ///
@@ -19,11 +19,11 @@
 ///   @debug $output; //=> 'd-e-a-b-c'
 
 @function pipe($params...) {
-    $function-list: init($params);
-    $result: last($params);
+    $function-list: init.init($params);
+    $result: last.last($params);
 
     @each $function in $function-list {
-        $result: _run-function-with-params($function, $result);
+        $result: run-function-with-params.run-function-with-params($function, $result);
     }
 
     @return $result;

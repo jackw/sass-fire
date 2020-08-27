@@ -1,6 +1,7 @@
-@import 'filter';
-@import 'uniq';
-@import 'compose';
+@use "sass:list";
+@use 'filter';
+@use 'uniq';
+@use 'compose';
 
 $_sass-fire-intersection-array: ();
 
@@ -20,13 +21,13 @@ $_sass-fire-intersection-array: ();
 ///      @debug $four-n-three; //=> [4, 3]
 ///
 @function intersection($list1: (), $list2: ()) {
-    $lookup: if(length($list1) > length($list2), $list1, $list2);
-    $filtered: if(length($list1) > length($list2), $list2, $list1);
+    $lookup: if(list.length($list1) > list.length($list2), $list1, $list2);
+    $filtered: if(list.length($list1) > list.length($list2), $list2, $list1);
     $_sass-fire-intersection-array: $filtered !global;
-    $result: compose(uniq, (filter, _sass-fire-intersection-filter), $lookup);
+    $result: compose.compose(uniq, (filter, _sass-fire-intersection-filter), $lookup);
     @return $result;
 }
 
 @function _sass-fire-intersection-filter($item) {
-    @return index($_sass-fire-intersection-array, $item);
+    @return list.index($_sass-fire-intersection-array, $item);
 }

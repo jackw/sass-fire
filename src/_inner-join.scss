@@ -1,5 +1,7 @@
-@import 'inc';
-@import 'filter';
+@use "sass:list";
+@use "sass:meta";
+@use 'inc';
+@use 'filter';
 
 // as gross as this is there is no way that I know of to get around it. :(
 $_sass-fire-inner-join-fn: '';
@@ -32,7 +34,7 @@ $_sass-fire-inner-join-list: '';
 @function inner-join($pred, $a, $b) {
     $_sass-fire-inner-join-fn: $pred !global;
     $_sass-fire-inner-join-list: $b !global;
-    @return filter(_inner-join-filter, $a);
+    @return filter.filter(_inner-join-filter, $a);
 }
 
 @function _inner-join-filter($x) {
@@ -45,13 +47,13 @@ $_sass-fire-inner-join-list: '';
 
 @function _includes-with($pred, $x, $list) {
     $idx: 1;
-    $length: length($list);
+    $length: list.length($list);
 
     @while $idx <= $length {
-        @if (call(get-function($pred), $x, nth($list, $idx))) {
+        @if (meta.call(meta.get-function($pred), $x, list.nth($list, $idx))) {
             @return true;
         }
-        $idx: inc($idx);
+        $idx: inc.inc($idx);
     }
     @return false;
 }

@@ -1,3 +1,6 @@
+@use "sass:list";
+@use "sass:meta";
+@use "sass:string";
 /// Returns the first element of the given list or string.
 /// In some libraries this function is named `first`.
 ///
@@ -14,9 +17,9 @@
 ///   @debug $first; //=> 'h'
 
 @function head($list) {
-    @if type-of($list) == 'string' {
-        @return str-slice($list, 1, 1);
+    @if meta.type-of($list) == 'string' {
+        @return string.slice($list, 1, 1);
     }
 
-    @return nth($list, 1);
+    @return list.nth($list, 1);
 }

@@ -1,7 +1,9 @@
-@import './internal/run-function-with-params';
-@import 'init';
-@import 'last';
-@import 'head';
+@use "sass:list";
+@use "sass:math";
+@use './internal/run-function-with-params';
+@use 'init';
+@use 'last';
+@use 'head';
 
 /// Performs right-to-left function composition. The right most parameter is the input
 ///
@@ -20,12 +22,12 @@
 ///   @debug $output; //=> 'd-e-a-b-c'
 
 @function compose($params...) {
-    $function-list: init($params);
-    $result: last($params);
+    $function-list: init.init($params);
+    $result: last.last($params);
 
-    @for $i from length($function-list) * -1 through -1 {
-        $function: nth($function-list, abs($i));
-        $result: _run-function-with-params($function, $result);
+    @for $i from list.length($function-list) * -1 through -1 {
+        $function: list.nth($function-list, math.abs($i));
+        $result: run-function-with-params.run-function-with-params($function, $result);
     }
 
     @return $result;

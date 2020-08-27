@@ -1,4 +1,5 @@
-@import 'hasPath';
+@use "sass:string";
+@use 'hasPath';
 
 /// Returns whether or not an object has a property with the specified name
 ///
@@ -16,6 +17,6 @@
 ///   @debug $has-flower; //=> false
 
 @function has($prop, $obj) {
-    $_prop: quote($prop);
-    @return hasPath($_prop, $obj);
+    $_prop: string.quote($prop);
+    @return hasPath.hasPath($_prop, $obj);
 }

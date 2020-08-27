@@ -1,5 +1,6 @@
-@import './internal/run-function-with-params';
-@import 'inc';
+@use "sass:list";
+@use './internal/run-function-with-params';
+@use 'inc';
 
 /// Takes a list of predicates and returns true for a list of arguments
 /// if every one of the provided predicates is satisfied
@@ -17,13 +18,13 @@
 
 @function all-pass($preds, $val) {
     $idx: 1;
-    @while $idx <= length($preds) {
-        $fn: nth($preds, $idx);
-        $result: _run-function-with-params($fn, $val);
+    @while $idx <= list.length($preds) {
+        $fn: list.nth($preds, $idx);
+        $result: run-function-with-params.run-function-with-params($fn, $val);
         @if not $result {
             @return false;
         }
-        $idx: inc($idx);
+        $idx: inc.inc($idx);
     }
-    @return if(length($preds) > 0, true, false);
+    @return if(list.length($preds) > 0, true, false);
 }

@@ -1,3 +1,4 @@
+@use "sass:list";
 /// Returns a string made by inserting the `separator` between each element and
 /// concatenating all the elements into a single string. Ramda defines this as
 /// join but sass has it's own join method.
@@ -14,9 +15,9 @@
 
 @function implode($separator: '', $xs: ()) {
     $result: '';
-    @for $i from 1 through length($xs) {
+    @for $i from 1 through list.length($xs) {
         $delimiter: if($i != 1, $separator + '', '');
-        $item: #{$delimiter + nth($xs, $i)};
+        $item: #{$delimiter + list.nth($xs, $i)};
         $result: #{$result + $item};
     }
 

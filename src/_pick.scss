@@ -1,4 +1,6 @@
-@import 'inc';
+@use "sass:list";
+@use "sass:map";
+@use 'inc';
 
 /// Returns a partial copy of an object containing only the keys specified. If
 /// the key does not exist, the property is ignored.
@@ -18,12 +20,12 @@
 @function pick($names, $obj) {
     $result: ();
     $idx: 1;
-    @while ($idx <= length($names)) {
-        @if map-has-key($obj, nth($names, $idx)) {
-            $key: nth($names, $idx);
-            $result: map-merge($result, (#{$key}: map-get($obj, $key)));
+    @while ($idx <= list.length($names)) {
+        @if map.has-key($obj, list.nth($names, $idx)) {
+            $key: list.nth($names, $idx);
+            $result: map.merge($result, (#{$key}: map.get($obj, $key)));
         }
-        $idx: inc($idx);
+        $idx: inc.inc($idx);
     }
     @return $result;
 }

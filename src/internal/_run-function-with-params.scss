@@ -1,16 +1,18 @@
-@import '../tail';
-@import '../head';
+@use "sass:list";
+@use "sass:meta";
+@use '../tail';
+@use '../head';
 
-@function _run-function-with-params($function, $input) {
-    $fn: if(type-of($function) == 'list', head($function), $function);
-    @if type-of($function) == 'list' or type-of($function) == 'arglist' {
-        $input: append(tail($function), $input);
+@function run-function-with-params($function, $input) {
+    $fn: if(meta.type-of($function) == 'list', head.head($function), $function);
+    @if meta.type-of($function) == 'list' or meta.type-of($function) == 'arglist' {
+        $input: list.append(tail.tail($function), $input);
     }
-    @if function-exists($fn) {
-        @if type-of($input) == 'map' {
-            @return call(get-function($fn), $input);
+    @if meta.function-exists($fn) {
+        @if meta.type-of($input) == 'map' {
+            @return meta.call(meta.get-function($fn), $input);
         } @else {
-            @return call(get-function($fn), $input...);
+            @return meta.call(meta.get-function($fn), $input...);
         }
     } @else {
         @return $input;

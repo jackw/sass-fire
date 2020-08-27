@@ -1,3 +1,5 @@
+@use "sass:list";
+@use "sass:meta";
 /// Takes a predicate and a list and returns a pair of filterable lists of the same type of
 /// elements which do and do not satisfy, the predicate, respectively.
 ///
@@ -20,11 +22,11 @@
     $satisfy: ();
     $dissatisfy: ();
     @each $item in $filterable {
-        $truthy: call(get-function($pred), $item);
+        $truthy: meta.call(meta.get-function($pred), $item);
         @if $truthy {
-            $satisfy: append($satisfy, $item);
+            $satisfy: list.append($satisfy, $item);
         } @else {
-            $dissatisfy: append($dissatisfy, $item);
+            $dissatisfy: list.append($dissatisfy, $item);
         }
     }
     @return ($satisfy, $dissatisfy);

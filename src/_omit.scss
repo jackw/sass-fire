@@ -1,3 +1,5 @@
+@use "sass:list";
+@use "sass:map";
 /// Returns a partial copy of an object omitting the specified keys
 ///
 /// @group object
@@ -14,16 +16,16 @@
     $result: ();
     $index: ();
     $idx: 1;
-    $length: length($keys);
+    $length: list.length($keys);
 
     @while $idx <= $length {
-        $index: map-merge($index, (#{nth($keys, $idx)}: 1));
+        $index: map.merge($index, (#{list.nth($keys, $idx)}: 1));
         $idx: $idx + 1;
     }
 
     @each $prop, $val in $map {
-        @if not map-has-key($index, $prop) {
-            $result: map-merge($result, (#{$prop}: $val));
+        @if not map.has-key($index, $prop) {
+            $result: map.merge($result, (#{$prop}: $val));
         }
     }
 

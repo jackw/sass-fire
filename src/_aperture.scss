@@ -1,6 +1,7 @@
 @use 'sass:math';
-@import 'slice';
-@import 'inc';
+@use "sass:list";
+@use 'slice';
+@use 'inc';
 
 /// Returns a new list, composed of n-tuples of consecutive elements. If `n` is
 /// greater than the length of the list, an empty list is returned.
@@ -16,20 +17,20 @@
 ///   @debug $consecutive; //=> (1 2) (2 3) (3 4) (4 5)
 
 @function aperture($n, $list) {
-    @if ($n > length($list)) {
+    @if ($n > list.length($list)) {
         @return ();
     }
     $result: ();
     $idx: 1;
     $step: $n - 1;
-    $list-length: length($list);
+    $list-length: list.length($list);
     $slice-to: if($n > $list-length, $list-length, $n);
     @while $idx <= $list-length {
         @if $idx > $list-length - $step {
             @return $result;
         }
-        $slice: slice($idx, $slice-to, $list);
-        $result: append($result, $slice);
+        $slice: slice.slice($idx, $slice-to, $list);
+        $result: list.append($result, $slice);
         $idx: $idx + 1;
         $slice-to: math.clamp($idx, $idx + $step, $list-length);
     }

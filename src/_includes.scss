@@ -1,5 +1,8 @@
-@import 'equals';
-@import 'inc';
+@use "sass:list";
+@use "sass:meta";
+@use "sass:string";
+@use 'equals';
+@use 'inc';
 
 /// Returns `true` if the specified value is equal, in [`equals`](#equals)
 /// terms, to at least one element of the given list; `false` otherwise.
@@ -19,16 +22,16 @@
 @function includes($a, $list) {
     $idx: 1;
 
-    @if (type-of($list) == 'string') {
+    @if (meta.type-of($list) == 'string') {
         // not the prettiest but probably best to return truthy.
-        @return if(str-index($list, $a), true, false);
+        @return if(string.index($list, $a), true, false);
     }
 
-    @while $idx <= length($list) {
-        @if (equals(nth($list, $idx), $a)) {
+    @while $idx <= list.length($list) {
+        @if (equals.equals(list.nth($list, $idx), $a)) {
             @return true;
         }
-        $idx: inc($idx);
+        $idx: inc.inc($idx);
     }
     @return false;
 }

@@ -1,4 +1,4 @@
-@import 'merge';
+@use 'merge';
 
 /// Create a new object with the own properties of the first object merged with
 /// the own properties of the second object. If a key exists in both objects,
@@ -20,5 +20,5 @@
 ///   @debug $merge-objs; //=> (x: 5, y: 2);
 
 @function merge-right($l, $r) {
-    @return merge($l, $r);
+    @return merge.merge($l, $r);
 }

@@ -1,4 +1,5 @@
-@import 'path';
+@use "sass:meta";
+@use 'path';
 
 /// Returns `true` if the specified object property at given path satisfies the
 /// given predicate; `false` otherwise.
@@ -16,6 +17,6 @@
 ///   @debug $value-is-pos; //=> true
 
 @function path-satisfies($pred, $path, $map) {
-    $value: path($path, $map);
-    @return if($value, call(get-function($pred), $value), false);
+    $value: path.path($path, $map);
+    @return if($value, meta.call(meta.get-function($pred), $value), false);
 }
