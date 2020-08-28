@@ -1,3 +1,0 @@
-dest: ./docs
-exclude:
-  - "**/*.spec.scss"
