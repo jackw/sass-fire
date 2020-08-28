@@ -1,0 +1,31 @@
+@function list($val) {
+    @return type-of($val) == 'list';
+}
+
+@function arglist($val) {
+    @return type-of($val) == 'arglist';
+}
+
+@function color($val) {
+    @return type-of($val) == 'color';
+}
+
+@function string($val) {
+    @return type-of($val) == 'string';
+}
+
+@function boolean($val) {
+    @return type-of($val) == 'bool';
+}
+
+@function number($val) {
+    @return type-of($val) == 'number';
+}
+
+@function null($val) {
+    @return type-of($val) == 'null';
+}
+
+@function map($val) {
+    @return type-of($val) == 'map';
+}

@@ -1,3 +1,4 @@
+@use './internal/is';
 @import 'slice';
 
 /// Returns all but the first element of the given list or string.
@@ -20,6 +21,6 @@
 ///   @debug $without-first; //=> 'ello world'
 
 @function tail($list) {
-    $length: if(type-of($list) == 'string', str-length($list), length($list));
+    $length: if(is.string($list), str-length($list), length($list));
     @return slice(2, $length, $list);
 }

@@ -1,3 +1,5 @@
+@use './internal/is';
+
 /// Returns the first element of the given list or string.
 /// In some libraries this function is named `first`.
 ///
@@ -14,7 +16,7 @@
 ///   @debug $first; //=> 'h'
 
 @function head($list) {
-    @if type-of($list) == 'string' {
+    @if is.string($list) {
         @return str-slice($list, 1, 1);
     }
 

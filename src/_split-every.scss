@@ -1,4 +1,5 @@
 @use 'sass:math';
+@use './internal/is';
 @import 'slice';
 @import 'inc';
 
@@ -21,11 +22,7 @@
     }
     $result: ();
     $idx: 1;
-    $list-length: if(
-        type-of($list) == 'string',
-        str-length($list),
-        length($list)
-    );
+    $list-length: if(is.string($list), str-length($list), length($list));
     $slice-to: if($n > $list-length, $list-length, $n);
 
     @while $idx <= $list-length {

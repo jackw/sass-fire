@@ -1,3 +1,5 @@
+@use './internal/is';
+
 /// Returns the last element of the given list or string.
 ///
 /// @group list
@@ -16,7 +18,7 @@
 ///   @debug $last; //=> 'd'
 
 @function last($list) {
-    @if type-of($list) == 'string' {
+    @if is.string($list) {
         @return str-slice($list, str-length($list), str-length($list));
     }
     @return nth($list, length($list));

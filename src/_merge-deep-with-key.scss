@@ -1,3 +1,4 @@
+@use './internal/is';
 @import 'merge-with-key';
 
 // as gross as this is there is no way that I know of to get around it. :(
@@ -40,7 +41,7 @@ $_sass-fire-merge-deep-with-key-fn: '';
 }
 
 @function _sass-fire-merge-deep-with-key-caller($k, $l-val, $r-val) {
-    @if type-of($l-val) == 'map' and type-of($r-val) == 'map' {
+    @if is.map($l-val) and is.map($r-val) {
         @return merge-deep-with-key(
             $_sass-fire-merge-deep-with-key-fn,
             $l-val,
