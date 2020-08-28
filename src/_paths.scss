@@ -1,3 +1,4 @@
+@use './internal/is';
 @import 'inc';
 @import 'init';
 @import 'last';
@@ -35,13 +36,11 @@ $_sass-fire-paths-map: ();
             @return null;
         }
         $p: nth($path, $idx);
-        @if type-of($val) == 'map' {
+        @if is.map($val) {
             $val: if(map-has-key($val, $p), map-get($val, $p), null);
         } @else if
-            type-of($val) ==
-            'list' and
-            type-of($p) ==
-            'number' and
+            is.list($val) and
+            is.number($p) and
             $p !=
             0 and
             abs($p) <=

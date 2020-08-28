@@ -1,16 +1,19 @@
+@use 'is';
 @import '../tail';
 @import '../head';
 
 @function _run-function-with-params($function, $input) {
-    $fn: if(type-of($function) == 'list', head($function), $function);
-    @if type-of($function) == 'list' or type-of($function) == 'arglist' {
-        $input: append(tail($function), $input);
-    }
+    $fn: if(is.list($function), head($function), $function);
+    $params: if(
+        is.list($function) or is.arglist($function),
+        append(tail($function), $input),
+        $input
+    );
     @if function-exists($fn) {
-        @if type-of($input) == 'map' {
-            @return call(get-function($fn), $input);
+        @if is.map($params) {
+            @return call(get-function($fn), $params);
         } @else {
-            @return call(get-function($fn), $input...);
+            @return call(get-function($fn), $params...);
         }
     } @else {
         @return $input;

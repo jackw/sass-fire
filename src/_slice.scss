@@ -1,3 +1,5 @@
+@use './internal/is';
+
 /// Returns the elements of the given list or string
 /// from `fromIndex` to `toIndex`.
 ///
@@ -18,7 +20,7 @@
 ///   @debug $sliced; //=> 'hell'
 
 @function slice($from-index, $to-index, $list) {
-    @if type-of($list) == 'string' {
+    @if is.string($list) {
         @return str-slice($list, $from-index, $to-index);
     }
 

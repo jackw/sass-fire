@@ -1,5 +1,6 @@
-/// Takes a function and applies the function to each of the functor's values,
-/// and returns a functor of the same shape.
+@use './internal/is';
+
+/// Takes a function and applies the function to each of the functor's values.
 /// sass-fire provides suitable map implementations for List and Map.
 ///
 /// @group list
@@ -10,10 +11,10 @@
 /// @example scss - map
 ///
 ///   @function double($number) { @return $number * 2; }
+///
 ///   $double-list: map(double, [1 2 3 4 5 6 7 8 9]);
 ///   @debug $double-list; //=> [2 4 6 8 10 12 14 16 18]
 ///
-///   @function double($number) { @return $number * 2; }
 ///   $double-obj: map(double, (x: 1, y: 2, z: 3));
 ///   @debug $double-obj; //=> (x: 2, y: 4, z: 6)
 ///
@@ -21,7 +22,7 @@
 @function map($function, $list) {
     $accumulator: ();
 
-    @if type-of($list) == 'map' {
+    @if is.map($list) {
         @each $key, $value in $list {
             $accumulator: map-merge(
                 $accumulator,

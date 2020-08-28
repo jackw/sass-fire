@@ -1,3 +1,4 @@
+@use './internal/is';
 @import 'equals';
 @import 'inc';
 
@@ -19,7 +20,7 @@
 @function includes($a, $list) {
     $idx: 1;
 
-    @if (type-of($list) == 'string') {
+    @if is.string($list) {
         // not the prettiest but probably best to return truthy.
         @return if(str-index($list, $a), true, false);
     }
