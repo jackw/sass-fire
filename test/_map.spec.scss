@@ -1,6 +1,7 @@
 @import 'true';
 @import '../src/map';
 @import '../src/add';
+@import '../src/sum';
 
 @function _map_spec_add5($number) {
     @return $number + 5;
@@ -14,18 +15,25 @@
         $input: (1 2 3 4 5 6 7 8 9);
         $expected: (6 7 8 9 10 11 12 13 14);
         @include assert-equal(map(_map_spec_add5, $input), $expected);
+        @include assert-equal(map((sum 5), $input), $expected);
     }
     @include it('should run a function against each item in an object') {
         $input: (
             x: 1,
             y: 2,
-            z: 3
+            z: 3,
         );
         $expected: (
             x: 2,
             y: 4,
-            z: 6
+            z: 6,
+        );
+        $sum-expected: (
+            x: 7,
+            y: 9,
+            z: 11,
         );
         @include assert-equal(map(_map_spec_double, $input), $expected);
+        @include assert-equal(map(sum 5, $expected), $sum-expected);
     }
 }
