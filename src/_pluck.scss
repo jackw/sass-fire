@@ -1,0 +1,21 @@
+@import 'prop';
+@import 'map';
+@import 'last';
+
+/// Returns a new list by plucking the same named property from all objects in
+/// the supplied list.
+///
+/// @group list
+/// @param {Number|String} key The key name to pluck from each object.
+/// @param {Array} arr The array to consider.
+/// @return {Array} The list of values for the given key.
+/// @see props
+///
+/// @example scss - pluck
+///
+///   $avenger-names: pluck('name', $avengers)
+///   @debug $avenger-names; //=> ('Black Widow' 'Captain America' 'Hawkeye' 'Hulk' 'Iron man' 'Thor')
+
+@function pluck($key, $arr) {
+    @return map((prop, $key), $arr);
+}

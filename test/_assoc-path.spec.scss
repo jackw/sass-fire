@@ -1,0 +1,109 @@
+@import 'true';
+@import '../src/assoc-path';
+@import '../src/path';
+
+@include describe('assoc-path [function]') {
+    @include it('overrides only what is necessary for the path') {
+        $obj1: (
+            a: (
+                b: 1,
+                c: 2,
+                d: (
+                    e: 3,
+                ),
+            ),
+            f: (
+                g: (
+                    h: 4,
+                    i: (
+                        5,
+                        6,
+                        7,
+                    ),
+                    j: (
+                        k: 6,
+                        l: 7,
+                    ),
+                ),
+            ),
+            m: 8,
+        );
+        $obj2: assoc-path(('f', 'g', 'i', 2), 42, $obj1);
+        @include assert-equal(path(f g i, $obj2), (5, 42, 7));
+        @include assert-equal(path(a, $obj2), path(a, $obj1));
+        @include assert-equal(path(m, $obj2), path(m, $obj1));
+        @include assert-equal(path(f g h, $obj2), path(f g h, $obj1));
+        @include assert-equal(path(f g j, $obj2), path(f g j, $obj1));
+    }
+
+    @include it(
+        'is the equivalent of clone and setPath if the property is not on the original'
+    ) {
+        $obj1: (
+            a: 1,
+            b: (
+                c: 2,
+                d: 3,
+            ),
+            e: 4,
+            f: 5,
+        );
+        $obj2: assoc-path(('x', 1, 'y'), 42, $obj1);
+        @include assert-equal(
+            $obj2,
+            (
+                a: 1,
+                b: (
+                    c: 2,
+                    d: 3,
+                ),
+                e: 4,
+                f: 5,
+                x:
+                    append(
+                        (),
+                        (
+                            y: 42,
+                        )
+                    ),
+            )
+        );
+        @include assert-equal(path(a, $obj2), path(a, $obj1));
+        @include assert-equal(path(b, $obj2), path(b, $obj1));
+        @include assert-equal(path(e, $obj2), path(e, $obj1));
+        @include assert-equal(path(f, $obj2), path(f, $obj1));
+    }
+
+    @include it('empty path replaces the whole object') {
+        @include assert-equal(
+            assoc-path(
+                (),
+                3,
+                (
+                    a: 1,
+                    b: 2,
+                )
+            ),
+            3
+        );
+    }
+
+    @include it('replaces `null` with a new object') {
+        @include assert-equal(
+            assoc-path(
+                ('foo', 'bar', 'baz'),
+                42,
+                (
+                    foo: null,
+                )
+            ),
+            (
+                foo: (
+                    bar: (
+                        baz: 42,
+                    ),
+                ),
+            )
+        );
+    }
+}

@@ -1,0 +1,50 @@
+@use './internal/is';
+@import 'assoc';
+@import 'has';
+@import 'slice';
+
+/// Makes a shallow clone of an object, setting or overriding the nodes required
+/// to create the given path
+///
+/// @group object
+/// @param {Array} path the path to set
+/// @param {*} val The new value
+/// @param {Object} obj The object to clone
+/// @return {Object} A new object equivalent to the original except along the specified path.
+///
+/// @example scss - assoc-path
+///
+///   $set-prop: assoc-path('a' 'b' 'c', 42, (a: (b: (c: 0))));
+///   @debug $set-prop; //=> (a: (b: (c: 42)))
+
+@function assoc-path($path, $val, $obj) {
+    @if length($path) == 0 {
+        @return $val;
+    }
+
+    $idx: nth($path, 1);
+
+    @if length($path) > 1 {
+        $next-obj: if(
+            is.map($obj) and has($idx, $obj),
+            map-get($obj, $idx),
+            ()
+        );
+        $val: assoc-path(slice(2, length($path), $path), $val, $next-obj);
+    }
+
+    $result: ();
+
+    @if is.number($idx) and is.list($obj) {
+        @if length($obj) == 0 {
+            $result: append($obj, $val);
+        } @else {
+            $result: set-nth($obj, $idx, $val);
+        }
+    } @else {
+        $_obj: if(is.null($obj), (), $obj);
+        $result: assoc($idx, $val, $_obj);
+    }
+
+    @return $result;
+}

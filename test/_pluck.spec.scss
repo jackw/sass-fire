@@ -1,0 +1,38 @@
+@import 'true';
+@import '../src/pluck';
+
+@include describe('pluck [function]') {
+    $the-avengers: (
+        (
+            name: 'Black Widow',
+            age: 34,
+        ),
+        (
+            name: 'Captain America',
+            age: 100,
+        ),
+        (
+            name: 'Hawkeye',
+            age: 47,
+        ),
+        (
+            name: 'Hulk',
+            age: 49,
+        ),
+        (
+            name: 'Iron man',
+            age: '48',
+        ),
+        (
+            name: 'Thor',
+            age: 'unknown',
+        )
+    );
+
+    @include it('should appropriate property over an array') {
+        @include assert-equal(
+            pluck('name', $the-avengers),
+            ('Black Widow' 'Captain America' 'Hawkeye' 'Hulk' 'Iron man' 'Thor')
+        );
+    }
+}
