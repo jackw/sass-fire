@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/jackw/sass-fire/compare/v2.1.1...v2.2.0) (2020-09-03)
+
+
+### Features
+
+* **reduce:** run-function-with-params for decorating function ([d7666f2](https://github.com/jackw/sass-fire/commit/d7666f2))
+* introduce assoc-path and pluck ([644c56b](https://github.com/jackw/sass-fire/commit/644c56b))
+
 ## [2.1.1](https://github.com/jackw/sass-fire/compare/v2.1.0...v2.1.1) (2020-08-27)
 
 
