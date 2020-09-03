@@ -35,7 +35,7 @@ What's available?
 | applyTo                 | apply-to                  | ❌          |
 | ascend                  | ascend                    | ❌          |
 | assoc                   | assoc                     | ✅          |
-| assocPath               | assoc-path                | ❌          |
+| assocPath               | assoc-path                | ✅          |
 | binary                  | binary                    | ❌          |
 | bind                    | bind                      | ❌          |
 | both                    | both                      | ❌          |
@@ -189,7 +189,7 @@ What's available?
 | pipeK                   | pipe-k                    | ❌          |
 | pipeP                   | pipe-p                    | ❌          |
 | pipeWith                | pipe-with                 | ❌          |
-| pluck                   | pluck                     | ❌          |
+| pluck                   | pluck                     | ✅          |
 | prepend                 | prepend                   | ✅          |
 | product                 | product                   | ✅          |
 | project                 | project                   | ❌          |

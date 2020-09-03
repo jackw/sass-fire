@@ -12,5 +12,5 @@
 ///   @debug $mean-average; //=> 6
 
 @function mean($list...) {
-    @return sum($list) / length($list);
+    @return sum($list...) / length($list);
 }

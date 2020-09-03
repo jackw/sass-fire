@@ -1,9 +1,10 @@
 @import 'true';
 @import '../src/reduce';
-@import '../src/add';
+@import '../src/sum';
 
 @include describe('reduce [function]') {
     @include it('should run a function against each item in a list') {
         @include assert-equal(reduce(add, 0, (1 2 3 4 5 6 7 8 9)), 45);
+        @include assert-equal(reduce((sum 5), 0, (1 2 3 4 5 6 7 8 9)), 90);
     }
 }

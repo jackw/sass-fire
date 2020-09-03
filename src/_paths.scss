@@ -26,7 +26,7 @@ $_sass-fire-paths-map: ();
     @return map(_sass-fire-path, $paths);
 }
 
-@function _sass-fire-path($path) {
+@function _sass-fire-path($path...) {
     $val: $_sass-fire-paths-map;
     $idx: 1;
     $p: null;

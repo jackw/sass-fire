@@ -1,3 +1,8 @@
+@use "./internal/is";
+@import './internal/run-function-with-params';
+@import './head';
+@import './tail';
+
 /// Returns a single item by iterating through the list, successively calling
 /// the iterator function and passing it an accumulator value and the current
 /// value from the array, and then passing the result to the next call.
@@ -15,12 +20,13 @@
 ///   @debug $sum-of-numbers-plz; //=> 45
 
 @function reduce($function, $acc, $list) {
+    $fn: if(is.list($function), head($function), $function);
+    $fn-params: if(is.list($function), tail($function), ());
     $accumulator: $acc;
     @for $i from 1 through length($list) {
-        $accumulator: call(
-            get-function($function),
-            $accumulator,
-            nth($list, $i)
+        $accumulator: _run-function-with-params(
+            $fn,
+            join($fn-params, ($accumulator, nth($list, $i)))
         );
     }
 

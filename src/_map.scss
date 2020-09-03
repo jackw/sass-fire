@@ -1,4 +1,5 @@
 @use './internal/is';
+@import './internal/run-function-with-params';
 
 /// Takes a function and applies the function to each of the functor's values.
 /// sass-fire provides suitable map implementations for List and Map.
@@ -27,7 +28,7 @@
             $accumulator: map-merge(
                 $accumulator,
                 (
-                    $key: call(get-function($function), $value),
+                    $key: _run-function-with-params($function, $value),
                 )
             );
         }
@@ -36,7 +37,7 @@
             $item: nth($list, $i);
             $accumulator: append(
                 $accumulator,
-                call(get-function($function), $item)
+                _run-function-with-params($function, $item)
             );
         }
     }
