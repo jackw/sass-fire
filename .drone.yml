@@ -19,7 +19,7 @@ steps:
     - yarn test
 
   - name: semantic-release
-    image: gtramontina/semantic-release:17.1.1
+    image: gtramontina/semantic-release:17.4.3
     environment:
       GH_TOKEN:
         from_secret: GH_TOKEN
