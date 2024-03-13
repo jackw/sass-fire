@@ -30,7 +30,7 @@
     "cz-conventional-changelog": "3.3.0",
     "glob": "7.1.6",
     "jest": "26.4.2",
-    "sass": "1.26.10",
+    "sass": "1.72.0",
     "prettier": "2.1.1",
     "sass-true": "6.0.0",
     "semantic-release": "17.1.1",
